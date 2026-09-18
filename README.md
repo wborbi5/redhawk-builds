@@ -24,7 +24,7 @@ Vercel: framework Other, root directory `.`, no build command, output directory 
 
 ## Brand
 
-Ink backgrounds; brick-red actions; green for prices and prize amounts. JetBrains Mono for headings, labels, and numbers; Inter for body text. Font licenses are included in `assets/fonts/`.
+Ink backgrounds; brick-red actions; green for prices and prize amounts. Barlow Condensed ExtraBold for headings and major prize figures; DM Sans for labels, body text, and ordinary numbers. Font licenses are included in `assets/fonts/`.
 
 Registration URLs, contact email, final logo artwork, and finals timing still require organizer input.
 
