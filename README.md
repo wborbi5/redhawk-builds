@@ -20,10 +20,11 @@ Configure static social metadata with `node scripts/set-social-origin.mjs https:
 
 ## Deployment
 
-Vercel: framework Other, root directory `.`, no build command, output directory `.`. The GitHub repository is connected for deployment updates when available.
+Vercel: framework Other, root directory `.`, no build command, output directory `.`. Live site: https://redhawk-builds.vercel.app. Deploy manually with `vercel --prod`. Automatic Git deployments require connecting the GitHub account to Vercel, then linking this repository.
 
 ## Brand
 
 Ink backgrounds; brick-red actions; green for prices and prize amounts. JetBrains Mono for headings, labels, and numbers; Inter for body text. Font licenses are included in `assets/fonts/`.
 
 Registration URLs, contact email, final logo artwork, and finals timing still require organizer input.
+

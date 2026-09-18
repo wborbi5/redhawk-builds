@@ -4,7 +4,8 @@ window.RHB_CONFIG = {
   DEVPOST_URL: "DEVPOST_URL",
   GROUPME_URL: "GROUPME_URL",
   CONTACT_EMAIL: "CONTACT_EMAIL",
-  SITE_URL: "SITE_URL",
+  SITE_URL: "https://redhawk-builds.vercel.app",
   // Preserve original SVG colors and proportions. No filters or recoloring.
   logos: { primaryDark: "", sepi: "", banking: "", ai: "" }
 };
+
