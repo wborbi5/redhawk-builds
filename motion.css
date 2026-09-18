@@ -1,0 +1,85 @@
+/* Motion layer. Loaded last; every effect is disabled under prefers-reduced-motion. */
+:root{--ease:cubic-bezier(.22,.8,.24,1)}
+html{scroll-padding-top:110px}
+body{overflow-x:clip}
+@media(max-width:600px){html{scroll-padding-top:90px}}
+
+/* Sticky masthead that condenses on scroll */
+.masthead{position:sticky;top:0;z-index:20;transition:height .35s var(--ease)}
+.masthead::before{content:"";position:absolute;inset-block:0;left:50%;width:100vw;transform:translateX(-50%);background:rgba(11,13,18,.82);border-bottom:1px solid var(--line);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);z-index:-1;opacity:0;transition:opacity .35s var(--ease)}
+.masthead.compact{height:68px}
+.masthead.compact::before{opacity:1}
+.masthead .wordmark{transition:font-size .35s var(--ease)}
+.masthead.compact .wordmark{font-size:23px}
+.masthead nav a{position:relative;padding-block:6px}
+.masthead nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+.masthead nav a:hover,.masthead nav a[aria-current]{text-decoration:none}
+.masthead nav a:hover::after,.masthead nav a[aria-current]::after{transform:scaleX(1)}
+.progress{position:fixed;inset:0 0 auto 0;height:3px;background:var(--red);transform:scaleX(0);transform-origin:left;z-index:30;pointer-events:none}
+
+/* Buttons and links */
+.button span[aria-hidden],.text-link span[aria-hidden]{display:inline-block;transition:transform .25s var(--ease)}
+.button:hover span[aria-hidden]{transform:translate(3px,-3px)}
+.text-link:hover span[aria-hidden]{transform:translateY(3px)}
+.button:active{transform:translateY(0)}
+
+/* Hero load-in */
+@keyframes rise{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+@keyframes wipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes slide{from{opacity:0;transform:translateX(-26px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.hero-topline{animation:fade .8s var(--ease) both}
+.campaign-hero-grid h1{animation:rise 1s var(--ease) .1s both}
+.hero-copy>*{animation:rise .9s var(--ease) both}
+.hero-copy>:nth-child(1){animation-delay:.3s}.hero-copy>:nth-child(2){animation-delay:.4s}.hero-copy>:nth-child(3){animation-delay:.5s}.hero-copy>:nth-child(4){animation-delay:.6s}.hero-copy>:nth-child(5){animation-delay:.7s}
+.campaign-ribbon{animation:wipe 1s var(--ease) .55s both}
+.campaign-ribbon span{animation:slide .8s var(--ease) both}
+.campaign-ribbon span:nth-child(1){animation-delay:.85s}.campaign-ribbon span:nth-child(2){animation-delay:1s}.campaign-ribbon span:nth-child(3){animation-delay:1.15s}
+.hero-location{animation:fade .9s var(--ease) 1.3s both}
+
+/* Scroll reveals (classes added by app.js) */
+.reveal.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
+.reveal.reveal.in{opacity:1;transform:none}
+
+/* Card hovers */
+.beats article,.prizes article,.schedule article{transition:border-color .3s,transform .4s var(--ease)}
+.beats article:hover,.prizes article:hover{border-top-color:var(--red);transform:translateY(-4px)}
+.schedule article:hover{border-top-color:var(--red)}
+.schedule article .day strong{transition:color .3s}
+.schedule article:hover .day strong{color:var(--red)}
+.prizes strong{transition:transform .4s var(--ease)}
+.prizes article:hover strong{transform:translateX(6px)}
+.judging dl div{transition:border-color .3s,padding-left .3s var(--ease)}
+.judging dl div:hover{border-bottom-color:var(--red);padding-left:8px}
+.hosts>div{transition:transform .4s var(--ease)}
+.hosts>div:hover{transform:translateY(-3px)}
+
+/* FAQ */
+.faq-list summary{transition:color .2s}
+.faq-list summary:hover{color:white}
+.faq-list summary::after{transition:transform .3s var(--ease),color .2s}
+.faq-list summary:hover::after{color:var(--red)}
+.faq-list details[open]>p{animation:rise .45s var(--ease) both}
+
+/* Footer ticker: fill the row, draw the line when it scrolls into view */
+.ticker-bar{gap:40px}
+.chart{flex:1 1 auto;width:auto;max-width:380px;height:auto;margin-left:auto;overflow:visible}
+.price-line{stroke-dasharray:1;stroke-dashoffset:1;animation:none}
+.price-area{opacity:0;transition:opacity 1s var(--ease) 1.2s}
+.price-dot{opacity:0;transform-box:fill-box;transform-origin:center;transition:opacity .3s 1.7s}
+.ticker-bar.in .price-line{animation:draw 1.8s var(--ease) .1s forwards}
+.ticker-bar.in .price-area{opacity:1}
+.ticker-bar.in .price-dot{opacity:1;animation:pulse 2.2s ease-out 1.9s infinite}
+@keyframes pulse{0%{transform:scale(1);opacity:1}70%,100%{transform:scale(3);opacity:0}}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+@media(max-width:800px){.chart{max-width:220px}}
+@media(max-width:600px){.masthead.compact{height:64px}.ticker-bar{gap:16px}.chart{flex-basis:70px;max-width:none;min-width:70px}}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal.reveal{opacity:1;transform:none}
+  .price-line{stroke-dashoffset:0}.price-area,.price-dot{opacity:1}
+  .progress{display:none}
+}
