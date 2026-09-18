@@ -2,7 +2,7 @@
   'use strict';
   const config = window.RHB_CONFIG || {};
   const status = document.getElementById('link-status');
-  const labels = {TYPEFORM_URL:'Registration', LUMA_URL:'Luma', DEVPOST_URL:'Devpost', GROUPME_URL:'GroupMe'};
+  const labels = {TYPEFORM_URL:'Registration', LUMA_URL:'Luma', DEVPOST_URL:'Devpost', GROUPME_URL:'GroupMe', SEPI_URL:'Sigma Eta Pi', BANKING_URL:'Miami Banking Club', AI_URL:'RedHawk Applied AI'};
   const validUrl = value => { try { return new URL(value).protocol === 'https:'; } catch { return false; } };
   document.querySelectorAll('[data-link]').forEach(link => {
     const key = link.dataset.link;
@@ -19,7 +19,7 @@
     if (!src) return;
     const slot = document.querySelector(`[data-logo="${key}"]`); if (!slot) return;
     const img = new Image(); img.alt = {primaryDark:'Redhawk Builds', sepi:'Sigma Eta Pi', banking:'Miami Banking Club', ai:'RedHawk Applied AI'}[key];
-    img.onload = () => slot.replaceChildren(img); img.src = src;
+    img.onload = () => (slot.querySelector('a') || slot).replaceChildren(img); img.src = src;
   });
 
   // ---- Motion layer (all optional: content is fully visible without it) ----
@@ -40,15 +40,13 @@
 
   if (!('IntersectionObserver' in window)) { document.querySelector('.ticker-bar')?.classList.add('in'); return; }
 
-  // Highlight the nav link for the section in view.
+  // Highlight the nav link for the section in view; clear it in sections without one.
   const navLinks = [...document.querySelectorAll('.masthead nav a')];
   const navObserver = new IntersectionObserver(entries => entries.forEach(({target, isIntersecting}) => {
     if (!isIntersecting) return;
     navLinks.forEach(a => a.toggleAttribute('aria-current', a.getAttribute('href') === `#${target.id}`));
   }), {rootMargin: '-45% 0px -50% 0px'});
-  navLinks.forEach(a => { const t = document.querySelector(a.getAttribute('href')); if (t) navObserver.observe(t); });
-  const hero = document.querySelector('.hero');
-  if (hero) new IntersectionObserver(([e]) => { if (e.isIntersecting) navLinks.forEach(a => a.removeAttribute('aria-current')); }, {rootMargin: '-45% 0px -50% 0px'}).observe(hero);
+  document.querySelectorAll('main > section').forEach(section => navObserver.observe(section));
 
   // Count numbers up from zero, keeping the final value for assistive tech.
   const countUp = el => {
