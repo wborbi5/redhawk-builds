@@ -17,14 +17,14 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://redhawk-builds.vercel.app/assets/og.png">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="preload" as="image" href="assets/hero/frame-1.webp" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/hero/05_cartoon_mcvey.webp" type="image/webp" fetchpriority="high">
   <link rel="stylesheet" href="scene.css">
   <script>document.documentElement.classList.remove("no-js");</script>
 </head>
 <body id="top">
   <a class="skip" href="#main">Skip to content</a>
   <header class="mast on-hero">
-    <h1 class="wordmark"><a href="#top">Redhawk<br>Builds</a></h1>
+    <a class="wordmark" href="#top">Redhawk<br>Builds</a>
     <nav aria-label="Main">
       <a href="#weekend">Weekend</a>
       <a href="#schedule">Schedule</a>
@@ -34,58 +34,37 @@
     <a class="btn btn-small" href="https://docs.google.com/forms/d/e/1FAIpQLScEPdZW1_kBf0A8Ke2lWXd7GGR5c7ZGH3eJiWm--uUlJQguMQ/viewform" data-link="REGISTER_URL">Register</a>
   </header>
   <a class="dock btn" href="https://docs.google.com/forms/d/e/1FAIpQLScEPdZW1_kBf0A8Ke2lWXd7GGR5c7ZGH3eJiWm--uUlJQguMQ/viewform" data-link="REGISTER_URL">Register</a>
+  <canvas id="field" aria-hidden="true"></canvas>
 
-  <div class="walk" id="walk">
-    <div class="walk-pin">
-      <div class="stage" aria-hidden="true">
-        <!-- Opening shot: replace assets/hero/frame-1.webp to swap this frame. -->
-        <div class="frame" data-frame="0" style="--ox:61%;--oy:58%">
-          <img src="assets/hero/frame-1.webp" alt="" width="1280" height="720" fetchpriority="high" decoding="async">
-        </div>
-        <div class="frame" data-frame="1" style="--ox:50%;--oy:64%">
-          <picture>
-            <source srcset="assets/hero/frame-2.avif" type="image/avif">
-            <img src="assets/hero/frame-2.webp" alt="" width="1280" height="720" decoding="async">
-          </picture>
-        </div>
-        <div class="frame" data-frame="2" style="--ox:50%;--oy:48%">
-          <picture>
-            <source srcset="assets/hero/frame-3.avif" type="image/avif">
-            <img src="assets/hero/frame-3.webp" alt="" width="1280" height="720" decoding="async">
-          </picture>
-        </div>
-        <div class="frame" data-frame="3" style="--ox:50%;--oy:42%">
-          <picture>
-            <source srcset="assets/hero/frame-4.avif" type="image/avif">
-            <img src="assets/hero/frame-4.webp" alt="" width="1280" height="720" decoding="async">
-          </picture>
-        </div>
-        <div class="bloom"></div>
-        <div class="veil"></div>
-        <div class="shade shade-top"></div>
-        <div class="shade shade-bottom"></div>
+  <div class="hero-scroll" id="hero">
+    <div class="hero-pin">
+      <div class="hero-photo">
+        <picture>
+          <source srcset="assets/hero/05_cartoon_mcvey.webp" type="image/webp">
+          <img src="assets/hero/05_cartoon_mcvey.jpg" alt="" width="1280" height="720" fetchpriority="high" decoding="async">
+        </picture>
       </div>
-      <div class="walk-ui">
-        <div>
+      <div class="hero-copy">
+        <div class="hero-top">
+          <h1>Redhawk<br>Builds</h1>
           <p class="hero-tagline">Where Finance and Technology Intersect</p>
           <p class="hero-meta">Nov 6 to 8, 2026 · McVey Data Science Building</p>
         </div>
-        <a class="scroll-cue" href="#portal"><span>Scroll to walk in</span><i aria-hidden="true"></i></a>
+        <div class="hero-bottom">
+          <div class="hosted">
+            <p class="hosted-label">Hosted by</p>
+            <ul>
+              <li><a href="https://www.sepiatmiami.com/screens/home.html" data-link="SEPI_URL"><img src="assets/logos/sepi.png" alt="Sigma Eta Pi" width="283" height="280"></a></li>
+              <li><a href="https://www.muibc.com/" data-link="BANKING_URL"><img src="assets/logos/banking-club.png" alt="Miami Banking Club" width="138" height="249"></a></li>
+              <li><a href="https://mubc.io/" data-link="MUBC_URL"><img src="assets/logos/mubc.png" alt="MUBC" width="212" height="220"></a></li>
+              <li><a href="https://www.redhawkappliedai.club/" data-link="AI_URL"><img src="assets/logos/redhawk-applied-ai.png" alt="RedHawk Applied AI" width="239" height="220"></a></li>
+            </ul>
+          </div>
+          <a class="scroll-cue" href="#weekend"><span>Scroll</span><i aria-hidden="true"></i></a>
+        </div>
       </div>
     </div>
   </div>
-
-  <section class="portal" id="portal" aria-label="Enter the weekend">
-    <div class="portal-pin">
-      <img class="portal-atrium" src="assets/hero/frame-4.webp" alt="" width="1280" height="720">
-      <div class="portal-stage">
-        <p class="eyebrow">Inside McVey</p>
-        <h2>The room is open.</h2>
-        <p class="lede">Free for Miami students. Any major, any skill level.</p>
-      </div>
-      <div class="portal-cover" aria-hidden="true"></div>
-    </div>
-  </section>
 
   <main id="main" class="site">
     <section class="band" id="weekend">
@@ -116,28 +95,38 @@
     <section class="band" id="perks">
       <header class="band-head">
         <p class="eyebrow">Perks</p>
-        <h2>While you are here.</h2>
+        <h2>What you leave with.</h2>
       </header>
-      <div class="grid grid-4">
+      <div class="grid grid-3">
         <article class="spot">
           <p class="spot-kicker">01</p>
-          <h3>Meals</h3>
-          <p>Food all weekend.</p>
+          <h3>Launch something real</h3>
+          <p>Build a project in one weekend. Put it on your resume and talk about it in interviews and applications.</p>
         </article>
         <article class="spot">
           <p class="spot-kicker">02</p>
-          <h3>Event shirt</h3>
-          <p>One for every student.</p>
+          <h3>Learn to build with AI</h3>
+          <p>Hands-on, with mentors in the room, even if you have never coded.</p>
         </article>
         <article class="spot">
           <p class="spot-kicker">03</p>
-          <h3>API credits</h3>
-          <p>For every team. Sponsors TBA.</p>
+          <h3>Pitch for cash</h3>
+          <p data-perk-prizes>1st place $2,000. 2nd place $1,000. 3rd place $500.</p>
         </article>
         <article class="spot">
           <p class="spot-kicker">04</p>
-          <h3>People in the room</h3>
-          <p>Workshops, mentors, and judges from industry.</p>
+          <h3>Free food</h3>
+          <p>Meals all weekend.</p>
+        </article>
+        <article class="spot">
+          <p class="spot-kicker">05</p>
+          <h3>Free shirt</h3>
+          <p>A Redhawk Builds shirt is yours.</p>
+        </article>
+        <article class="spot">
+          <p class="spot-kicker">06</p>
+          <h3>Meet builders</h3>
+          <p>The people at Miami who build things, plus sponsors and recruiters.</p>
         </article>
       </div>
     </section>
@@ -145,10 +134,9 @@
     <section class="band" id="prizes">
       <header class="band-head">
         <p class="eyebrow">Prizes</p>
-        <h2>What you are building toward.</h2>
-        <p>Amounts are still under review. The figures below are the current plan.</p>
+        <h2>Cash for the top three.</h2>
       </header>
-      <div class="grid grid-4">
+      <div class="grid grid-3">
         <article class="spot prize" data-prize="0">
           <p class="spot-kicker" data-prize-label>1st place</p>
           <p class="spot-money" data-prize-amount>$2,000</p>
@@ -160,10 +148,6 @@
         <article class="spot prize" data-prize="2">
           <p class="spot-kicker" data-prize-label>3rd place</p>
           <p class="spot-money" data-prize-amount>$500</p>
-        </article>
-        <article class="spot">
-          <p class="spot-kicker">Best Use</p>
-          <h3 data-best-use>Sponsor Best Use awards are TBA.</h3>
         </article>
       </div>
     </section>
@@ -220,24 +204,6 @@
       </div>
     </section>
 
-    <section class="band" id="judging">
-      <header class="band-head">
-        <p class="eyebrow">Judging</p>
-        <h2>Finals rubric.</h2>
-        <p>Weighted toward fintech. Weights are locked. Category names will be checked against the Devpost rubric before launch.</p>
-      </header>
-      <article class="spot rubric-card">
-        <ol class="rubric">
-          <li><span>Fintech relevance</span><b>20</b></li>
-          <li><span>Technical execution</span><b>15</b></li>
-          <li><span>Innovation</span><b>20</b></li>
-          <li><span>Impact and viability</span><b>25</b></li>
-          <li><span>Design and UX</span><b>10</b></li>
-          <li><span>Pitch</span><b>10</b></li>
-        </ol>
-      </article>
-    </section>
-
     <section class="band" id="faq">
       <header class="band-head">
         <p class="eyebrow">FAQ</p>
@@ -274,21 +240,26 @@
     <section class="band" id="hosts">
       <header class="band-head">
         <p class="eyebrow">Hosts</p>
-        <h2>Three student orgs.</h2>
+        <h2>Four student orgs.</h2>
       </header>
-      <div class="grid grid-3">
+      <div class="grid grid-4 hosts">
         <a class="spot host" href="https://www.sepiatmiami.com/screens/home.html" data-link="SEPI_URL" target="_blank" rel="noopener">
-          <p class="spot-kicker">Host</p>
+          <img src="assets/logos/sepi.png" alt="" width="283" height="280">
           <h3>Sigma Eta Pi</h3>
-          <p>SEPi</p>
+          <p>Entrepreneurship fraternity</p>
         </a>
         <a class="spot host" href="https://www.muibc.com/" data-link="BANKING_URL" target="_blank" rel="noopener">
-          <p class="spot-kicker">Host</p>
-          <h3>Banking Club</h3>
+          <img src="assets/logos/banking-club.png" alt="" width="138" height="249">
+          <h3>Miami Banking Club</h3>
           <p>Miami University</p>
         </a>
+        <a class="spot host" href="https://mubc.io/" data-link="MUBC_URL" target="_blank" rel="noopener">
+          <img src="assets/logos/mubc.png" alt="" width="212" height="220">
+          <h3>MUBC</h3>
+          <p>Miami University Blockchain Club</p>
+        </a>
         <a class="spot host" href="https://www.redhawkappliedai.club/" data-link="AI_URL" target="_blank" rel="noopener">
-          <p class="spot-kicker">Host</p>
+          <img src="assets/logos/redhawk-applied-ai.png" alt="" width="239" height="220">
           <h3>RedHawk Applied AI</h3>
           <p>Student organization</p>
         </a>
@@ -298,31 +269,12 @@
     <section class="band" id="sponsors">
       <header class="band-head">
         <p class="eyebrow">Sponsors</p>
-        <h2>Announced soon.</h2>
-        <p>No company names until they are confirmed.</p>
+        <h2>Sponsor the weekend.</h2>
       </header>
-      <div class="grid grid-3">
-        <article class="spot">
-          <p class="spot-kicker">Tier</p>
-          <h3>Presenting Partner</h3>
-          <p>Announced soon.</p>
-        </article>
-        <article class="spot">
-          <p class="spot-kicker">Tier</p>
-          <h3>Build Partners</h3>
-          <p>AI credits. Announced soon.</p>
-        </article>
-        <article class="spot">
-          <p class="spot-kicker">Tier</p>
-          <h3>Data Partner</h3>
-          <p>Announced soon.</p>
-        </article>
-      </div>
-      <p class="sponsor-row"><a class="btn" href="#sponsors" data-sponsor>Become a sponsor</a></p>
+      <p class="sponsor-row"><a class="btn" data-sponsor>Become a sponsor</a></p>
     </section>
 
     <section class="band closing" id="register">
-      <div class="paths" aria-hidden="true"></div>
       <div class="closing-copy">
         <p class="eyebrow">Nov 6 to 8, 2026</p>
         <h2>Come build.</h2>
