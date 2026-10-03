@@ -104,7 +104,7 @@
     canvas.width = Math.round(cssW * dpr);
     canvas.height = Math.round(cssH * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    dot = mobile ? 1.2 : 1.35;
+    dot = mobile ? 1.45 : 1.6;
 
     let sep = mobile ? 16 : 14;
     let cols = Math.max(8, Math.round(cssW / sep));
@@ -145,11 +145,11 @@
       for (let i = 0; i < cols; i += 1) {
         const tx = (i + 0.5) * gapX;
         const ty = (j + 0.5) * gapY;
-        let lum = 0.16 + 0.14 * (0.5 + 0.5 * Math.sin(i * 0.48) * Math.sin(j * 0.31));
+        let lum = 0.24 + 0.2 * (0.5 + 0.5 * Math.sin(i * 0.48) * Math.sin(j * 0.31));
         if (data) {
           const px = clamp(Math.round((tx - ox) / scale), 0, iw - 1);
           const py = clamp(Math.round((ty - oy) / scale), 0, ih - 1);
-          lum = pixelWeight(data, iw, ih, px, py) * 0.48;
+          lum = pixelWeight(data, iw, ih, px, py) * 0.68;
         }
         const h1 = Math.sin(i * 127.1 + j * 311.7) * 43758.5453;
         const h2 = Math.sin(j * 269.5 + i * 183.3) * 43758.5453;
@@ -201,7 +201,7 @@
     const amp = Math.min(cssW, cssH) * 0.006 * wave;
     const t = time;
     ctx.clearRect(0, 0, cssW, cssH);
-    ctx.fillStyle = "rgba(255,255,255,.62)";
+    ctx.fillStyle = "rgba(255,255,255,.82)";
 
     const place = (n, x, y) => {
       xy[n * 2] = x;
@@ -221,7 +221,7 @@
       const y = points[o + 1] + points[o + 3] * scatter + (Math.sin(col * 0.42 + t * 1.2) + Math.sin(row * 0.34 + t * 0.92)) * amp;
       place(n, x, y);
       const srcA = lum;
-      const a = (srcA * (1 - mix) + 0.28 * mix) * fadeIn * 0.55;
+      const a = (srcA * (1 - mix) + 0.42 * mix) * fadeIn * 0.72;
       const bin = a <= 0.045 ? 0 : Math.min(BINS - 1, Math.ceil(a * (BINS - 1)));
       bins[n] = bin;
       binCount[bin] += 1;

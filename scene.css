@@ -59,7 +59,7 @@ a.btn:not([href]):hover{background:var(--red)}
 .dock.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
 
 #field{position:fixed;inset:0;z-index:0;width:100%;height:100%;pointer-events:none}
-.hero-scroll{position:relative;z-index:1;height:225vh;height:225svh}
+.hero-scroll{position:relative;z-index:1;height:150vh;height:150svh}
 .hero-pin{position:sticky;top:0;height:100vh;height:100svh;min-height:100vh;overflow:hidden}
 .hero-photo,.hero-photo picture,.hero-photo img{
   position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;max-width:none;max-height:none
@@ -248,7 +248,7 @@ a.btn:not([href]):hover{background:var(--red)}
   .mast{height:60px;padding:0 16px}
   .mast nav,.mast .btn{display:none}
   .dock{display:inline-flex}
-  .hero-scroll{height:210vh;height:210svh}
+  .hero-scroll{height:150vh;height:150svh}
   .hero-copy{padding:72px 16px calc(88px + env(safe-area-inset-bottom))}
   .hero-copy h1{font-size:52px}
   .hero-tagline{font-size:18px}
