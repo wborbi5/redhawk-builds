@@ -63,12 +63,37 @@
     const iw = photoImg.naturalWidth;
     const ih = photoImg.naturalHeight;
     if (!iw || !ih) return null;
-    const off = document.createElement("canvas");
-    off.width = iw;
-    off.height = ih;
-    const octx = off.getContext("2d", { willReadFrequently: true });
-    octx.drawImage(photoImg, 0, 0, iw, ih);
-    return { data: octx.getImageData(0, 0, iw, ih).data, iw, ih };
+    try {
+      const off = document.createElement("canvas");
+      off.width = iw;
+      off.height = ih;
+      const octx = off.getContext("2d", { willReadFrequently: true });
+      octx.drawImage(photoImg, 0, 0, iw, ih);
+      return { data: octx.getImageData(0, 0, iw, ih).data, iw, ih };
+    } catch (error) {
+      return null;
+    }
+  };
+
+  const pixelWeight = (data, iw, ih, px, py) => {
+    let best = 0;
+    for (let dy = -6; dy <= 6; dy += 2) {
+      const y = py + dy;
+      if (y < 0 || y >= ih) continue;
+      for (let dx = -6; dx <= 6; dx += 2) {
+        const x = px + dx;
+        if (x < 0 || x >= iw) continue;
+        const idx = (y * iw + x) * 4;
+        const r = data[idx];
+        const g = data[idx + 1];
+        const b = data[idx + 2];
+        const lum = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+        const red = Math.max(0, (r - Math.max(g, b)) / 255);
+        const weight = Math.min(1, Math.max(0, (lum - 0.04) / 0.055) + red * 1.7);
+        if (weight > best) best = weight;
+      }
+    }
+    return best;
   };
 
   const build = () => {
@@ -98,8 +123,8 @@
     xy = new Float32Array(count * 2);
     order = new Uint16Array(count);
 
-    if (!cached) cached = sampleImage();
-    const samp = cached;
+    if (!cached) cached = sampleImage() || { failed: true };
+    const samp = cached && cached.data ? cached : null;
     let scale = 1;
     let ox = 0;
     let oy = 0;
@@ -120,12 +145,11 @@
       for (let i = 0; i < cols; i += 1) {
         const tx = (i + 0.5) * gapX;
         const ty = (j + 0.5) * gapY;
-        let lum = 0.15;
+        let lum = 0.42 + 0.38 * (0.5 + 0.5 * Math.sin(i * 0.48) * Math.sin(j * 0.31));
         if (data) {
           const px = clamp(Math.round((tx - ox) / scale), 0, iw - 1);
           const py = clamp(Math.round((ty - oy) / scale), 0, ih - 1);
-          const idx = (py * iw + px) * 4;
-          lum = (0.2126 * data[idx] + 0.7152 * data[idx + 1] + 0.0722 * data[idx + 2]) / 255;
+          lum = pixelWeight(data, iw, ih, px, py);
         }
         const h1 = Math.sin(i * 127.1 + j * 311.7) * 43758.5453;
         const h2 = Math.sin(j * 269.5 + i * 183.3) * 43758.5453;
@@ -196,7 +220,7 @@
       const x = points[o] + points[o + 2] * scatter + Math.sin(row * 0.52 + t * 0.85) * amp * 0.28;
       const y = points[o + 1] + points[o + 3] * scatter + (Math.sin(col * 0.42 + t * 1.2) + Math.sin(row * 0.34 + t * 0.92)) * amp;
       place(n, x, y);
-      const srcA = lum <= 0.046 ? 0 : Math.min(1, (lum - 0.046) / 0.03);
+      const srcA = lum;
       const a = (srcA * (1 - mix) + 0.72 * mix) * fadeIn;
       const bin = a <= 0.045 ? 0 : Math.min(BINS - 1, Math.ceil(a * (BINS - 1)));
       bins[n] = bin;
@@ -228,14 +252,20 @@
     ctx.globalAlpha = 1;
   };
 
+  let booted = false;
   const boot = () => {
+    if (booted) return;
+    booted = true;
     build();
     measure();
     requestAnimationFrame(draw);
   };
 
-  if (photoImg.complete && photoImg.naturalWidth) boot();
-  else photoImg.addEventListener("load", boot, { once: true });
+  if (photoImg.complete) boot();
+  else {
+    photoImg.addEventListener("load", boot, { once: true });
+    photoImg.addEventListener("error", boot, { once: true });
+  }
 
   addEventListener("resize", () => {
     if (!points) return;

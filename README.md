@@ -12,7 +12,7 @@ Serve this folder with `python -m http.server 8000` and open `http://localhost:8
 
 Edit `config.js`. Registration is the Google Form (`REGISTER_URL`). Luma, Devpost, and GroupMe are secondary. Prize amounts live only in `prizes` inside that file. Leave `SPONSOR_EMAIL` blank until a real inbox exists.
 
-The hero illustration is `assets/hero/05_cartoon_mcvey.webp`, with the jpg kept beside it. The tagline is real HTML. Host marks are white-on-transparent files in `assets/logos/`.
+The hero illustration is `assets/hero/mcvey-cartoon-dark.webp`, with the jpg kept beside it. The tagline is real HTML. Host marks in `assets/logos/` keep their original colors and sit on light chips.
 
 Install the original green favicon with `node scripts/install-logo.mjs path/to/icon.svg`.
 
