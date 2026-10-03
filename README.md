@@ -1,6 +1,6 @@
 # Redhawk Builds
 
-Dark-first marketing site for Redhawk Builds, a Miami University fintech build weekend, November 6–8, 2026.
+Dark-first marketing site for Redhawk Builds, a Miami University fintech build weekend, November 6 to 8, 2026.
 
 ## Development
 
@@ -10,7 +10,9 @@ Serve this folder with `python -m http.server 8000` and open `http://localhost:8
 
 ## Configuration
 
-Edit `config.js` with the real Typeform, Luma, Devpost, and GroupMe URLs, contact email, and original logo paths. Unconfigured links display a coming-soon message. Typeform is the registration source of truth.
+Edit `config.js`. Registration is the Google Form (`REGISTER_URL`). Luma, Devpost, and GroupMe are secondary. Prize amounts live only in `prizes` inside that file. Leave `SPONSOR_EMAIL` blank until a real inbox exists.
+
+The opening hero frame is `assets/hero/frame-1.webp`. Replace that one file to swap the shot. The tagline is also real HTML, so the page still reads if the photo changes.
 
 The supplied campus photo is displayed at its original modest resolution. Brand and host logos remain reserved until the official SVGs are supplied. No university marks have been recreated.
 
