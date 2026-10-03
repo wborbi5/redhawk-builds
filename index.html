@@ -1,72 +1,350 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0B0D12">
-  <title>Redhawk Builds ($RHB) | Nov 6–8, 2026 · Miami University</title>
-  <meta name="description" content="Your first build counts. Join Miami students for an education-first fintech weekend at McVey, Nov 6–8, 2026. Learn Friday. Build Saturday. Pitch Sunday.">
-  <meta property="og:type" content="website"><meta property="og:title" content="Redhawk Builds · Your first build counts.">
-  <meta property="og:description" content="Nov 6–8, 2026. McVey Data Science Building, Miami University. Learn Friday. Build Saturday. Pitch Sunday.">
-  <meta name="twitter:card" content="summary_large_image">
-  <!-- Campaign social preview: 1200 x 630. -->
-  <!-- Favicon is installed from the supplied green app icon by scripts/install-logo.mjs. -->
-  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="campaign.css"><link rel="stylesheet" href="motion.css"><script src="config.js" defer></script><script src="app.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#07080c">
+  <title>Redhawk Builds | Nov 6 to 8, 2026 · Miami University</title>
+  <meta name="description" content="Where finance and technology intersect. A free hackathon for Miami students at the McVey Data Science Building, Nov 6 to 8, 2026.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Redhawk Builds · Where finance and technology intersect">
+  <meta property="og:description" content="Nov 6 to 8, 2026. McVey Data Science Building, Miami University. Free for Miami students.">
   <meta property="og:url" content="https://redhawk-builds.vercel.app/">
   <meta property="og:image" content="https://redhawk-builds.vercel.app/assets/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Redhawk Builds. Come curious. A fintech build weekend at McVey, Nov 6–8, 2026.">
+  <meta property="og:image:alt" content="Redhawk Builds. Where finance and technology intersect. Nov 6 to 8, 2026, Miami University.">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://redhawk-builds.vercel.app/assets/og.png">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" as="image" href="assets/hero/frame-1.webp" type="image/webp" fetchpriority="high">
+  <link rel="stylesheet" href="scene.css">
+  <script>document.documentElement.classList.remove("no-js");</script>
 </head>
-<body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="masthead wrap">
-  <a href="#" class="wordmark" aria-label="Redhawk Builds home"><span class="name-mark">REDHAWK<br>BUILDS</span></a>
-  <nav aria-label="Main navigation"><a href="#weekend">The weekend</a><a href="#schedule">Schedule</a><a href="#faq">FAQ</a></nav>
-  <a href="#registration" data-link="TYPEFORM_URL" class="button small">Register <span aria-hidden="true">↗</span></a>
-</header>
-<main id="main">
-<section class="hero wrap" aria-labelledby="hero-title">
-  <div class="hero-topline"><p class="eyebrow">MIAMI UNIVERSITY</p><span class="micro">NOV 6–8, 2026 / OXFORD, OH</span></div>
-  <div class="campaign-hero-grid">
-    <h1 id="hero-title">REDHAWK<br>BUILDS</h1>
-    <div class="hero-copy"><p class="hero-intro">A FINTECH <br>BUILD WEEKEND.</p><p class="hero-description">Business minds. Technical builders. One weekend to make something work.</p><p class="hero-welcome">First-time builders welcome.</p><div class="actions"><a class="button" href="#registration" data-link="TYPEFORM_URL">Register for the weekend <span aria-hidden="true">↗</span></a></div><div class="secondary-links"><a href="#registration" data-link="LUMA_URL">Find us on Luma ↗</a><a href="#registration" data-link="DEVPOST_URL">Devpost ↗</a></div></div>
+<body id="top">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="mast on-hero">
+    <h1 class="wordmark"><a href="#top">Redhawk<br>Builds</a></h1>
+    <nav aria-label="Main">
+      <a href="#weekend">Weekend</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#prizes">Prizes</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-small" href="https://docs.google.com/forms/d/e/1FAIpQLScEPdZW1_kBf0A8Ke2lWXd7GGR5c7ZGH3eJiWm--uUlJQguMQ/viewform" data-link="REGISTER_URL">Register</a>
+  </header>
+  <a class="dock btn" href="https://docs.google.com/forms/d/e/1FAIpQLScEPdZW1_kBf0A8Ke2lWXd7GGR5c7ZGH3eJiWm--uUlJQguMQ/viewform" data-link="REGISTER_URL">Register</a>
+
+  <div class="walk" id="walk">
+    <div class="walk-pin">
+      <div class="stage" aria-hidden="true">
+        <!-- Opening shot: replace assets/hero/frame-1.webp to swap this frame. -->
+        <div class="frame" data-frame="0" style="--ox:61%;--oy:58%">
+          <img src="assets/hero/frame-1.webp" alt="" width="1280" height="720" fetchpriority="high" decoding="async">
+        </div>
+        <div class="frame" data-frame="1" style="--ox:50%;--oy:64%">
+          <picture>
+            <source srcset="assets/hero/frame-2.avif" type="image/avif">
+            <img src="assets/hero/frame-2.webp" alt="" width="1280" height="720" decoding="async">
+          </picture>
+        </div>
+        <div class="frame" data-frame="2" style="--ox:50%;--oy:48%">
+          <picture>
+            <source srcset="assets/hero/frame-3.avif" type="image/avif">
+            <img src="assets/hero/frame-3.webp" alt="" width="1280" height="720" decoding="async">
+          </picture>
+        </div>
+        <div class="frame" data-frame="3" style="--ox:50%;--oy:42%">
+          <picture>
+            <source srcset="assets/hero/frame-4.avif" type="image/avif">
+            <img src="assets/hero/frame-4.webp" alt="" width="1280" height="720" decoding="async">
+          </picture>
+        </div>
+        <div class="bloom"></div>
+        <div class="veil"></div>
+        <div class="shade shade-top"></div>
+        <div class="shade shade-bottom"></div>
+      </div>
+      <div class="walk-ui">
+        <div>
+          <p class="hero-tagline">Where Finance and Technology Intersect</p>
+          <p class="hero-meta">Nov 6 to 8, 2026 · McVey Data Science Building</p>
+        </div>
+        <a class="scroll-cue" href="#portal"><span>Scroll to walk in</span><i aria-hidden="true"></i></a>
+      </div>
+    </div>
   </div>
-  <div class="campaign-ribbon"><span>LEARN FRIDAY.</span><span>BUILD SATURDAY.</span><span>PITCH SUNDAY.</span></div>
-  <div class="hero-location"><p>McVey Data Science Building<br><span>Miami University · Oxford, OH</span></p><a class="text-link" href="#schedule">Explore the weekend <span aria-hidden="true">↓</span></a></div>
-</section>
-<section id="weekend" class="section wrap">
-  <div class="section-heading"><p class="eyebrow">THE WEEKEND</p><h2>Make a<br>weekend of it.</h2><p>Learn the tools. Find your team. Build around a real fintech problem, then make the case for it.</p></div>
-  <div class="beats"><article><span class="beat-number mono">01</span><span class="micro">FRIDAY / LEARN</span><h3>Learn.</h3><p>Get oriented, meet other students, and learn before the build clock starts. Your first build counts.</p></article><article><span class="beat-number mono">02</span><span class="micro">SATURDAY / BUILD</span><h3>Build.</h3><p>Choose from <span class="mono">30</span> written fintech problems. Work in teams of <span class="mono">3–5</span> to turn your idea into a demo.</p></article><article><span class="beat-number mono">03</span><span class="micro">SUNDAY / PITCH</span><h3>Pitch.</h3><p>Lock your submission, show what works, and explain the problem, the business, and the choices behind your build.</p></article></div>
-  <div class="problem-note"><span class="mono">30 PROBLEMS. NO TRACKS.</span><p>Each host contributes <span class="mono">10</span> problem statements. Pick a problem, then build the team and approach it needs.</p></div>
-</section>
-<section class="audience section wrap"><div><p class="eyebrow">WHO IT’S FOR</p><h2>First<br>hackathon?</h2></div><div><p class="lead">You don’t need a finished idea.<br>You don’t need to be a CS major.</p><p>Farmer School business students, data science students, and CS builders belong in the same team. Bring research, financial thinking, code, product judgment, or a clear pitch.</p><p class="mono audience-note">MIAMI STUDENTS ONLY · FIRST-TIMERS WELCOME</p></div></section>
-<section id="schedule" class="section wrap">
-  <div class="section-heading"><p class="eyebrow">THE CLOCK</p><h2>Three days.<br>One build.</h2><p>The build window runs Saturday morning to Sunday morning. All times are local to Oxford, Ohio (Eastern Time).</p></div>
-  <div class="schedule"><article><div class="day"><span>FRI</span><strong>06</strong><span>NOV</span></div><div><span class="time">6:00 PM</span><h3>Check in. Settle in.</h3><p>Learn Friday: arrive, meet the room, and get ready to build.</p></div></article><article><div class="day"><span>SAT</span><strong>07</strong><span>NOV</span></div><div><span class="time">10:00 AM</span><h3>The build clock starts.</h3><p>Build Saturday: your <span class="mono">24-hour</span> window begins.</p></div></article><article><div class="day"><span>SUN</span><strong>08</strong><span>NOV</span></div><div><span class="time">10:00 AM</span><h3>Lock it. Then pitch it.</h3><p>Submit on Devpost. Finals follow; time to be announced.</p></div></article></div>
-  <p class="venue"><span class="brand mono">LOCATION /</span> McVey Data Science Building · Miami University · Oxford, OH</p>
-</section>
-<section id="prizes" class="section wrap">
-  <div class="section-heading"><p class="eyebrow">THE UPSIDE</p><h2>Build something<br>worth showing.</h2><p>Podium prizes, plus sponsor Best Use prizes.</p></div>
-  <div class="prizes"><article><span class="micro">FIRST PLACE</span><strong class="money">$2,000</strong></article><article><span class="micro">SECOND PLACE</span><strong class="money">$1,000</strong></article><article><span class="micro">THIRD PLACE</span><strong class="money">$500</strong></article></div>
-  <div class="judging"><div><p class="eyebrow">HOW YOU’RE JUDGED</p><h3>The demo matters.<br>So does the thinking.</h3></div><dl><div><dt>Problem</dt><dd>20</dd></div><div><dt>Fintech domain</dt><dd>15</dd></div><div><dt>Business model</dt><dd>20</dd></div><div><dt>Demo</dt><dd>25</dd></div><div><dt>Data / APIs</dt><dd>10</dd></div><div><dt>Pitch</dt><dd>10</dd></div></dl></div>
-</section>
-<section class="section wrap partners"><p class="eyebrow">BUILT TOGETHER</p><h2>Built together.</h2><div class="hosts"><div data-logo="sepi"><a class="host-link" href="#registration" data-link="SEPI_URL" target="_blank" rel="noopener"><span>Sigma Eta Pi <i aria-hidden="true">↗</i></span><small>SEPi</small></a></div><div data-logo="banking"><a class="host-link" href="#registration" data-link="BANKING_URL" target="_blank" rel="noopener"><span>Miami Banking Club <i aria-hidden="true">↗</i></span></a></div><div data-logo="ai"><a class="host-link" href="#registration" data-link="AI_URL" target="_blank" rel="noopener"><span>RedHawk Applied AI <i aria-hidden="true">↗</i></span></a></div></div><div class="sponsors"><div><span class="eyebrow">SPONSORS</span><p>Coming soon.</p></div><p class="mono">PRESENTING <span>·</span> BANK <span>·</span> DATA <span>·</span> BUILD</p></div></section>
-<section id="faq" class="section wrap faq"><div><p class="eyebrow">BEFORE YOU REGISTER</p><h2>Good<br>questions.</h2></div><div class="faq-list">
-  <details><summary>Who can attend?</summary><p>Redhawk Builds is for Miami University students. First-time builders are welcome, including business, data science, and CS students. We’re planning for approximately <span class="mono">100</span> attendees.</p></details>
-  <details><summary>How big are teams?</summary><p>Teams have <span class="mono">3–5</span> people. Bring a team or come ready to meet other students.</p></details>
-  <details><summary>Can we use AI?</summary><p>Yes. AI is allowed with disclosure. Explain what you used and how it contributed to your work.</p></details>
-  <details><summary>Where do I register and submit?</summary><p>Register through <a href="#registration" data-link="TYPEFORM_URL">Typeform</a>, the registration source of truth. <a href="#registration" data-link="LUMA_URL">Luma</a> is for discovery and RSVP; complete Typeform to register. Submit your project on <a href="#registration" data-link="DEVPOST_URL">Devpost</a>.</p></details>
-  <details><summary>Where will event updates happen?</summary><p><a href="#registration" data-link="GROUPME_URL">GroupMe</a> is the event operations chat. Check it for logistics and updates.</p></details>
-</div></section>
-<section id="registration" class="closing wrap"><p class="eyebrow">YOUR FIRST BUILD COUNTS.</p><h2>Come curious.</h2><p class="closing-invite">See you at McVey.</p><p class="mono">NOV 6–8, 2026 · OXFORD, OH</p><a href="#registration" class="button" data-link="TYPEFORM_URL">Register on Typeform <span aria-hidden="true">↗</span></a><p id="link-status" class="link-status" role="status" aria-live="polite">Registration link coming soon.</p></section>
-</main>
-<div class="wrap footer-ticker">
-  <div class="ticker-bar" aria-label="Redhawk Builds event ticker">
-    <div class="ticker-identity" data-logo="primaryDark"><span class="wordmark"><span class="brand">$</span>RHB</span><span class="micro">REDHAWK BUILDS</span></div>
-    <div class="ticker-price"><span class="micro">OPENING PRICE</span><span class="money" data-count="18.09" data-decimals="2">18.09</span></div>
-    <svg class="chart" viewBox="0 0 260 52" aria-hidden="true" focusable="false"><defs><linearGradient id="chart-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00D47E" stop-opacity=".22"/><stop offset="1" stop-color="#00D47E" stop-opacity="0"/></linearGradient></defs><path class="price-area" d="M1 49 H30 L48 42 H76 L98 34 H126 L150 24 H176 L195 15 H221 L240 3 H259 V52 H1 Z" fill="url(#chart-fill)"/><path class="price-line" pathLength="1" d="M1 49 H30 L48 42 H76 L98 34 H126 L150 24 H176 L195 15 H221 L240 3 H259" fill="none" stroke="#00D47E" stroke-width="2" stroke-linejoin="round"/><circle class="price-dot" cx="259" cy="3" r="3.5" fill="#00D47E"/></svg>
-  </div>
-</div>
-<footer class="wrap"><a class="wordmark" href="#"><span class="brand">$</span>RHB</a><p class="mono">Est. 1809. Shipping 2026.</p><span id="contact">Contact email coming soon.</span></footer>
-</body></html>
+
+  <section class="portal" id="portal" aria-label="Enter the weekend">
+    <div class="portal-pin">
+      <img class="portal-atrium" src="assets/hero/frame-4.webp" alt="" width="1280" height="720">
+      <div class="portal-stage">
+        <p class="eyebrow">Inside McVey</p>
+        <h2>The room is open.</h2>
+        <p class="lede">Free for Miami students. Any major, any skill level.</p>
+      </div>
+      <div class="portal-cover" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <main id="main" class="site">
+    <section class="band" id="weekend">
+      <header class="band-head">
+        <p class="eyebrow">The weekend</p>
+        <h2>Build where finance and technology intersect.</h2>
+        <p>A hackathon at Miami University. Students ship fintech and AI products in teams, over one weekend at McVey.</p>
+      </header>
+      <div class="grid grid-3">
+        <article class="spot">
+          <p class="spot-kicker">Dates</p>
+          <h3>Nov 6 to 8, 2026</h3>
+          <p>Friday through Sunday. All times are Eastern.</p>
+        </article>
+        <article class="spot">
+          <p class="spot-kicker">Venue</p>
+          <h3>McVey Data Science Building</h3>
+          <p>Miami University, Oxford, Ohio.</p>
+        </article>
+        <article class="spot">
+          <p class="spot-kicker">Who</p>
+          <h3>About 100 students</h3>
+          <p>About 25 teams. Up to 4 people. Solo builders get matched at the Friday mixer.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="band" id="perks">
+      <header class="band-head">
+        <p class="eyebrow">Perks</p>
+        <h2>While you are here.</h2>
+      </header>
+      <div class="grid grid-4">
+        <article class="spot">
+          <p class="spot-kicker">01</p>
+          <h3>Meals</h3>
+          <p>Food all weekend.</p>
+        </article>
+        <article class="spot">
+          <p class="spot-kicker">02</p>
+          <h3>Event shirt</h3>
+          <p>One for every student.</p>
+        </article>
+        <article class="spot">
+          <p class="spot-kicker">03</p>
+          <h3>API credits</h3>
+          <p>For every team. Sponsors TBA.</p>
+        </article>
+        <article class="spot">
+          <p class="spot-kicker">04</p>
+          <h3>People in the room</h3>
+          <p>Workshops, mentors, and judges from industry.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="band" id="prizes">
+      <header class="band-head">
+        <p class="eyebrow">Prizes</p>
+        <h2>What you are building toward.</h2>
+        <p>Amounts are still under review. The figures below are the current plan.</p>
+      </header>
+      <div class="grid grid-4">
+        <article class="spot prize" data-prize="0">
+          <p class="spot-kicker" data-prize-label>1st place</p>
+          <p class="spot-money" data-prize-amount>$2,000</p>
+        </article>
+        <article class="spot prize" data-prize="1">
+          <p class="spot-kicker" data-prize-label>2nd place</p>
+          <p class="spot-money" data-prize-amount>$1,000</p>
+        </article>
+        <article class="spot prize" data-prize="2">
+          <p class="spot-kicker" data-prize-label>3rd place</p>
+          <p class="spot-money" data-prize-amount>$500</p>
+        </article>
+        <article class="spot">
+          <p class="spot-kicker">Best Use</p>
+          <h3 data-best-use>Sponsor Best Use awards are TBA.</h3>
+        </article>
+      </div>
+    </section>
+
+    <section class="band" id="schedule">
+      <header class="band-head">
+        <p class="eyebrow">Schedule</p>
+        <h2>Three days. Draft times.</h2>
+        <p>Eastern time, in Oxford. This clock can still move.</p>
+      </header>
+      <div class="grid days">
+        <article class="spot">
+          <p class="spot-kicker">Friday</p>
+          <h3>Nov 6</h3>
+          <ol class="times">
+            <li><time datetime="2026-11-06T17:00">5:00 PM</time><span>Check-in opens</span></li>
+            <li><time datetime="2026-11-06T18:00">6:00 PM</time><span>Dinner</span></li>
+            <li><time datetime="2026-11-06T18:45">6:45 PM</time><span>Opening ceremony</span></li>
+            <li><time datetime="2026-11-06T19:30">7:30 PM</time><span>Team formation mixer</span></li>
+            <li><time datetime="2026-11-06T20:00">8:00 PM</time><span>Hacking starts</span></li>
+            <li><time datetime="2026-11-06T20:30">8:30 PM</time><span>Workshop, building with AI APIs</span></li>
+            <li><time datetime="2026-11-06T21:30">9:30 PM</time><span>Workshop, the data sandbox</span></li>
+            <li><time datetime="2026-11-06T23:59">11:59 PM</time><span>Late snack</span></li>
+          </ol>
+        </article>
+        <article class="spot">
+          <p class="spot-kicker">Saturday</p>
+          <h3>Nov 7</h3>
+          <ol class="times">
+            <li><time datetime="2026-11-07T08:30">8:30 AM</time><span>Breakfast</span></li>
+            <li><time datetime="2026-11-07T10:00">10:00 AM</time><span>Workshop, fintech 101</span></li>
+            <li><time datetime="2026-11-07T11:00">11:00 AM</time><span>Mentor office hours, until 4:00 PM</span></li>
+            <li><time datetime="2026-11-07T12:30">12:30 PM</time><span>Lunch</span></li>
+            <li><time datetime="2026-11-07T14:00">2:00 PM</time><span>Workshop, pitching and demos</span></li>
+            <li><time datetime="2026-11-07T15:00">3:00 PM</time><span>Midpoint check-in</span></li>
+            <li><time datetime="2026-11-07T18:30">6:30 PM</time><span>Dinner</span></li>
+            <li><time datetime="2026-11-07T21:00">9:00 PM</time><span>Office hours, round 2</span></li>
+            <li><time datetime="2026-11-07T23:59">11:59 PM</time><span>Midnight snack</span></li>
+          </ol>
+        </article>
+        <article class="spot">
+          <p class="spot-kicker">Sunday</p>
+          <h3>Nov 8</h3>
+          <ol class="times">
+            <li><time datetime="2026-11-08T08:00">8:00 AM</time><span>Breakfast</span></li>
+            <li><time datetime="2026-11-08T10:00">10:00 AM</time><span>Submissions close on Devpost</span></li>
+            <li><time datetime="2026-11-08T10:15">10:15 AM</time><span>Expo judging</span></li>
+            <li><time datetime="2026-11-08T12:30">12:30 PM</time><span>Finalists announced</span></li>
+            <li><time datetime="2026-11-08T13:00">1:00 PM</time><span>Finals. Top 5 teams, 4 minute pitch and 3 minutes of Q&amp;A each.</span></li>
+            <li><time datetime="2026-11-08T14:15">2:15 PM</time><span>Awards</span></li>
+            <li><time datetime="2026-11-08T14:45">2:45 PM</time><span>Closing and group photo</span></li>
+          </ol>
+        </article>
+      </div>
+    </section>
+
+    <section class="band" id="judging">
+      <header class="band-head">
+        <p class="eyebrow">Judging</p>
+        <h2>Finals rubric.</h2>
+        <p>Weighted toward fintech. Weights are locked. Category names will be checked against the Devpost rubric before launch.</p>
+      </header>
+      <article class="spot rubric-card">
+        <ol class="rubric">
+          <li><span>Fintech relevance</span><b>20</b></li>
+          <li><span>Technical execution</span><b>15</b></li>
+          <li><span>Innovation</span><b>20</b></li>
+          <li><span>Impact and viability</span><b>25</b></li>
+          <li><span>Design and UX</span><b>10</b></li>
+          <li><span>Pitch</span><b>10</b></li>
+        </ol>
+      </article>
+    </section>
+
+    <section class="band" id="faq">
+      <header class="band-head">
+        <p class="eyebrow">FAQ</p>
+        <h2>Before you register.</h2>
+      </header>
+      <div class="grid grid-2">
+        <article class="spot">
+          <h3>Do I need to know how to code?</h3>
+          <p>No. Teams need finance minds, designers, and builders.</p>
+        </article>
+        <article class="spot">
+          <h3>What does it cost?</h3>
+          <p>Nothing. Redhawk Builds is free.</p>
+        </article>
+        <article class="spot">
+          <h3>Do I need a team?</h3>
+          <p>No. Teams are up to 4. Solo builders get matched at the Friday mixer.</p>
+        </article>
+        <article class="spot">
+          <h3>What should I bring?</h3>
+          <p>A laptop, a charger, and whatever you need to stay overnight.</p>
+        </article>
+        <article class="spot">
+          <h3>Is it overnight?</h3>
+          <p>Yes. Building is open through the weekend.</p>
+        </article>
+        <article class="spot">
+          <h3>How do I submit?</h3>
+          <p>On Devpost, by 10 AM Sunday.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="band" id="hosts">
+      <header class="band-head">
+        <p class="eyebrow">Hosts</p>
+        <h2>Three student orgs.</h2>
+      </header>
+      <div class="grid grid-3">
+        <a class="spot host" href="https://www.sepiatmiami.com/screens/home.html" data-link="SEPI_URL" target="_blank" rel="noopener">
+          <p class="spot-kicker">Host</p>
+          <h3>Sigma Eta Pi</h3>
+          <p>SEPi</p>
+        </a>
+        <a class="spot host" href="https://www.muibc.com/" data-link="BANKING_URL" target="_blank" rel="noopener">
+          <p class="spot-kicker">Host</p>
+          <h3>Banking Club</h3>
+          <p>Miami University</p>
+        </a>
+        <a class="spot host" href="https://www.redhawkappliedai.club/" data-link="AI_URL" target="_blank" rel="noopener">
+          <p class="spot-kicker">Host</p>
+          <h3>RedHawk Applied AI</h3>
+          <p>Student organization</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="band" id="sponsors">
+      <header class="band-head">
+        <p class="eyebrow">Sponsors</p>
+        <h2>Announced soon.</h2>
+        <p>No company names until they are confirmed.</p>
+      </header>
+      <div class="grid grid-3">
+        <article class="spot">
+          <p class="spot-kicker">Tier</p>
+          <h3>Presenting Partner</h3>
+          <p>Announced soon.</p>
+        </article>
+        <article class="spot">
+          <p class="spot-kicker">Tier</p>
+          <h3>Build Partners</h3>
+          <p>AI credits. Announced soon.</p>
+        </article>
+        <article class="spot">
+          <p class="spot-kicker">Tier</p>
+          <h3>Data Partner</h3>
+          <p>Announced soon.</p>
+        </article>
+      </div>
+      <p class="sponsor-row"><a class="btn" href="#sponsors" data-sponsor>Become a sponsor</a></p>
+    </section>
+
+    <section class="band closing" id="register">
+      <div class="paths" aria-hidden="true"></div>
+      <div class="closing-copy">
+        <p class="eyebrow">Nov 6 to 8, 2026</p>
+        <h2>Come build.</h2>
+        <p class="lede">See you at McVey.</p>
+        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScEPdZW1_kBf0A8Ke2lWXd7GGR5c7ZGH3eJiWm--uUlJQguMQ/viewform" data-link="REGISTER_URL">Register</a>
+        <p class="secondary">
+          <a href="https://luma.com/axqsmwp0" data-link="LUMA_URL">Luma</a>
+          <a href="https://redhawk-builds-2026.devpost.com/" data-link="DEVPOST_URL">Devpost</a>
+          <a href="https://groupme.com/join_group/117611640/eJ9Vozza" data-link="GROUPME_URL">GroupMe</a>
+        </p>
+        <p id="link-status" class="link-status" role="status">The Google Form is how you register. A Luma RSVP alone does not sign you up.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="colophon">
+    <a class="wordmark" href="#top">Redhawk<br>Builds</a>
+    <p>Nov 6 to 8, 2026 · Oxford, Ohio</p>
+    <p>Miami students · Free to attend</p>
+  </footer>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+  <script src="hero.js"></script>
+</body>
+</html>

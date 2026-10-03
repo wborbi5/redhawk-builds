@@ -1,96 +1,166 @@
 (() => {
-  'use strict';
+  "use strict";
+
   const config = window.RHB_CONFIG || {};
-  const status = document.getElementById('link-status');
-  const labels = {TYPEFORM_URL:'Registration', LUMA_URL:'Luma', DEVPOST_URL:'Devpost', GROUPME_URL:'GroupMe', SEPI_URL:'Sigma Eta Pi', BANKING_URL:'Miami Banking Club', AI_URL:'RedHawk Applied AI'};
-  const validUrl = value => { try { return new URL(value).protocol === 'https:'; } catch { return false; } };
-  document.querySelectorAll('[data-link]').forEach(link => {
+  const status = document.getElementById("link-status");
+  const labels = {
+    REGISTER_URL: "Registration",
+    LUMA_URL: "Luma",
+    DEVPOST_URL: "Devpost",
+    GROUPME_URL: "GroupMe",
+    SEPI_URL: "Sigma Eta Pi",
+    BANKING_URL: "Miami Banking Club",
+    AI_URL: "RedHawk Applied AI"
+  };
+  const validUrl = (value) => {
+    try { return new URL(value).protocol === "https:"; }
+    catch { return false; }
+  };
+  const validEmail = (value) => typeof value === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
+  document.querySelectorAll("[data-link]").forEach((link) => {
     const key = link.dataset.link;
-    if (validUrl(config[key])) { link.href = config[key]; }
-    else link.addEventListener('click', () => { status.textContent = `${labels[key]} link coming soon. Check back here for updates.`; });
+    if (validUrl(config[key])) link.href = config[key];
+    else if (status) {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        status.textContent = `${labels[key] || "That"} link coming soon.`;
+      });
+    }
   });
-  if (validUrl(config.TYPEFORM_URL)) status.textContent = 'Complete Typeform to register. Luma RSVP alone does not register you.';
-  const email = config.CONTACT_EMAIL;
-  if (typeof email === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    const a = document.createElement('a'); a.href = `mailto:${email}`; a.textContent = email;
-    document.getElementById('contact').replaceWith(a);
+
+  const sponsor = document.querySelector("[data-sponsor]");
+  if (sponsor) {
+    if (validEmail(config.SPONSOR_EMAIL)) {
+      sponsor.href = `mailto:${config.SPONSOR_EMAIL}?subject=${encodeURIComponent("Redhawk Builds sponsorship")}`;
+    } else if (status) {
+      sponsor.addEventListener("click", (event) => {
+        event.preventDefault();
+        status.textContent = "Sponsor email coming soon.";
+      });
+    }
   }
-  Object.entries(config.logos || {}).forEach(([key, src]) => {
-    if (!src) return;
-    const slot = document.querySelector(`[data-logo="${key}"]`); if (!slot) return;
-    const img = new Image(); img.alt = {primaryDark:'Redhawk Builds', sepi:'Sigma Eta Pi', banking:'Miami Banking Club', ai:'RedHawk Applied AI'}[key];
-    img.onload = () => (slot.querySelector('a') || slot).replaceChildren(img); img.src = src;
+
+  const money = (amount) => `$${Number(amount).toLocaleString("en-US")}`;
+  (config.prizes || []).forEach((item, index) => {
+    const card = document.querySelector(`[data-prize="${index}"]`);
+    if (!card) return;
+    const label = card.querySelector("[data-prize-label]");
+    const amount = card.querySelector("[data-prize-amount]");
+    if (label) label.textContent = item.place;
+    if (amount) amount.textContent = money(item.amount);
   });
+  const best = document.querySelector("[data-best-use]");
+  if (best && config.bestUseNote) best.textContent = config.bestUseNote;
 
-  // ---- Motion layer (all optional: content is fully visible without it) ----
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const masthead = document.querySelector('.masthead');
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const main = document.getElementById("main");
+  if (main && !reduced) {
+    let pending = null;
+    let frame = 0;
+    main.addEventListener("pointermove", (event) => {
+      const card = event.target.closest?.(".spot");
+      if (!card || !main.contains(card)) return;
+      pending = { card, x: event.clientX, y: event.clientY };
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        if (!pending) return;
+        const rect = pending.card.getBoundingClientRect();
+        pending.card.style.setProperty("--mx", `${pending.x - rect.left}px`);
+        pending.card.style.setProperty("--my", `${pending.y - rect.top}px`);
+        pending = null;
+      });
+    }, { passive: true });
+  }
 
-  // Masthead condenses and a progress bar fills as the page scrolls.
-  const bar = document.createElement('div'); bar.className = 'progress'; bar.setAttribute('aria-hidden', 'true'); document.body.prepend(bar);
-  let ticking = false;
-  const onScroll = () => {
-    ticking = false;
-    const max = document.documentElement.scrollHeight - innerHeight;
-    bar.style.transform = `scaleX(${max > 0 ? Math.min(scrollY / max, 1) : 0})`;
-    masthead.classList.toggle('compact', scrollY > 40);
-  };
-  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, {passive: true});
-  onScroll();
+  const dock = document.querySelector(".dock");
+  const closing = document.getElementById("register");
+  if (dock && closing && "IntersectionObserver" in window) {
+    new IntersectionObserver(([entry]) => {
+      dock.classList.toggle("is-hidden", entry.isIntersecting);
+    }, { threshold: 0.45 }).observe(closing);
+  }
 
-  if (!('IntersectionObserver' in window)) { document.querySelector('.ticker-bar')?.classList.add('in'); return; }
+  const navLinks = [...document.querySelectorAll(".mast nav a")];
+  if (navLinks.length && "IntersectionObserver" in window) {
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(({ target, isIntersecting }) => {
+        if (!isIntersecting) return;
+        navLinks.forEach((link) => {
+          link.toggleAttribute("aria-current", link.getAttribute("href") === `#${target.id}`);
+        });
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    document.querySelectorAll("main > section[id]").forEach((section) => navObserver.observe(section));
+  }
 
-  // Highlight the nav link for the section in view; clear it in sections without one.
-  const navLinks = [...document.querySelectorAll('.masthead nav a')];
-  const navObserver = new IntersectionObserver(entries => entries.forEach(({target, isIntersecting}) => {
-    if (!isIntersecting) return;
-    navLinks.forEach(a => a.toggleAttribute('aria-current', a.getAttribute('href') === `#${target.id}`));
-  }), {rootMargin: '-45% 0px -50% 0px'});
-  document.querySelectorAll('main > section').forEach(section => navObserver.observe(section));
+  const pathsHost = document.querySelector(".paths");
+  if (pathsHost) pathsHost.append(buildPaths());
 
-  // Count numbers up from zero, keeping the final value for assistive tech.
-  const countUp = el => {
-    const end = parseFloat(el.dataset.count), decimals = +el.dataset.decimals || 0;
-    const final = el.textContent, prefix = final.match(/^\D*/)[0];
-    const shown = document.createElement('span'), hidden = document.createElement('span');
-    shown.setAttribute('aria-hidden', 'true'); hidden.className = 'sr-only'; hidden.textContent = final;
-    el.replaceChildren(shown, hidden);
-    const fmt = v => prefix + v.toLocaleString('en-US', {minimumFractionDigits: decimals, maximumFractionDigits: decimals});
-    const start = performance.now(), dur = 1400;
-    const tick = now => {
-      const t = Math.min((now - start) / dur, 1);
-      shown.textContent = fmt(end * (1 - Math.pow(1 - t, 4)));
-      if (t < 1) requestAnimationFrame(tick); else el.textContent = final;
-    };
-    requestAnimationFrame(tick);
-  };
-  if (reduced) { document.querySelector('.ticker-bar')?.classList.add('in'); return; }
-  document.querySelectorAll('.prizes .money').forEach(el => { el.dataset.count = el.textContent.replace(/[^\d.]/g, ''); });
+  function aestheticPath(index, position, type) {
+    const baseAmplitude = type === "primary" ? 150 : type === "secondary" ? 100 : 60;
+    const segments = type === "primary" ? 10 : type === "secondary" ? 8 : 6;
+    const phase = index * 0.2;
+    const startX = 2400;
+    const startY = 800;
+    const endX = -2400;
+    const endY = -800 + index * 25;
+    const points = [];
+    for (let i = 0; i <= segments; i += 1) {
+      const progress = i / segments;
+      const eased = 1 - (1 - progress) ** 2;
+      const amplitudeFactor = 1 - eased * 0.3;
+      const baseX = startX + (endX - startX) * eased;
+      const baseY = startY + (endY - startY) * eased;
+      const wave = Math.sin(progress * Math.PI * 3 + phase) * baseAmplitude * 0.7 * amplitudeFactor
+        + Math.cos(progress * Math.PI * 4 + phase) * baseAmplitude * 0.3 * amplitudeFactor
+        + Math.sin(progress * Math.PI * 2 + phase) * baseAmplitude * 0.2 * amplitudeFactor;
+      points.push({ x: baseX * position, y: baseY + wave });
+    }
+    return points.map((point, i) => {
+      if (i === 0) return `M ${point.x.toFixed(1)} ${point.y.toFixed(1)}`;
+      const prev = points[i - 1];
+      const cp1x = prev.x + (point.x - prev.x) * 0.4;
+      const cp2x = prev.x + (point.x - prev.x) * 0.6;
+      return `C ${cp1x.toFixed(1)} ${prev.y.toFixed(1)}, ${cp2x.toFixed(1)} ${point.y.toFixed(1)}, ${point.x.toFixed(1)} ${point.y.toFixed(1)}`;
+    }).join(" ");
+  }
 
-  // Fade sections in as they scroll into view, staggering siblings.
-  const targets = new Set();
-  const add = (el, i) => { if (!el.classList.contains('reveal')) { el.classList.add('reveal'); el.style.setProperty('--d', `${Math.min(i, 5) * 0.09}s`); targets.add(el); } };
-  document.querySelectorAll('.section-heading, .audience, .judging, .closing').forEach(g => [...g.children].forEach(add));
-  document.querySelectorAll('.beats, .schedule, .prizes, .hosts, .faq-list').forEach(g => [...g.children].forEach(add));
-  document.querySelectorAll('.partners > :not(.hosts), .faq > :first-child').forEach(add);
-  document.querySelectorAll('.problem-note, .venue, .sponsors').forEach(add);
-
-  const reveal = new IntersectionObserver(entries => entries.forEach(({target, isIntersecting}) => {
-    if (!isIntersecting) return;
-    reveal.unobserve(target);
-    target.classList.add('in');
-    if (target.matches('.prizes article')) countUp(target.querySelector('.money'));
-    target.addEventListener('transitionend', e => {
-      if (e.propertyName !== 'opacity') return;
-      target.classList.remove('reveal', 'in'); target.style.removeProperty('--d');
-    }, {once: true});
-  }), {threshold: 0.12, rootMargin: '0px 0px -6% 0px'});
-  targets.forEach(el => reveal.observe(el));
-
-  // Footer ticker: count the price up and draw the line when it arrives.
-  const ticker = document.querySelector('.ticker-bar');
-  if (ticker) new IntersectionObserver(([e], o) => {
-    if (!e.isIntersecting) return;
-    o.disconnect(); ticker.classList.add('in'); countUp(ticker.querySelector('.money'));
-  }, {threshold: 0.6}).observe(ticker);
+  function buildPaths() {
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", "-2800 -1500 5600 3000");
+    svg.setAttribute("preserveAspectRatio", "xMidYMid slice");
+    svg.setAttribute("aria-hidden", "true");
+    const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+    defs.innerHTML = `<linearGradient id="path-grad" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="0.55" stop-color="#ffd0d6" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#C3142D" stop-opacity="0.7"/>
+    </linearGradient>`;
+    svg.append(defs);
+    const groups = [
+      ["primary", 12, 1, "drift-a"],
+      ["secondary", 15, -1, "drift-b"],
+      ["accent", 10, 1, "drift-a"]
+    ];
+    groups.forEach(([type, count, position, drift]) => {
+      const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
+      group.setAttribute("class", drift);
+      for (let i = 0; i < count; i += 1) {
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute("d", aestheticPath(i, position, type));
+        path.setAttribute("fill", "none");
+        path.setAttribute("stroke", "url(#path-grad)");
+        path.setAttribute("stroke-linecap", "round");
+        const width = type === "primary" ? 4 + i * 0.3 : type === "secondary" ? 3 + i * 0.25 : 2 + i * 0.2;
+        const opacity = type === "primary" ? 0.15 + i * 0.02 : type === "secondary" ? 0.12 + i * 0.015 : 0.08 + i * 0.04;
+        path.setAttribute("stroke-width", String(width));
+        path.setAttribute("opacity", String(Math.min(opacity, 0.55)));
+        group.append(path);
+      }
+      svg.append(group);
+    });
+    return svg;
+  }
 })();
