@@ -104,7 +104,7 @@
     canvas.width = Math.round(cssW * dpr);
     canvas.height = Math.round(cssH * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    dot = mobile ? 2 : 2.25;
+    dot = mobile ? 1.2 : 1.35;
 
     let sep = mobile ? 16 : 14;
     let cols = Math.max(8, Math.round(cssW / sep));
@@ -145,18 +145,18 @@
       for (let i = 0; i < cols; i += 1) {
         const tx = (i + 0.5) * gapX;
         const ty = (j + 0.5) * gapY;
-        let lum = 0.42 + 0.38 * (0.5 + 0.5 * Math.sin(i * 0.48) * Math.sin(j * 0.31));
+        let lum = 0.16 + 0.14 * (0.5 + 0.5 * Math.sin(i * 0.48) * Math.sin(j * 0.31));
         if (data) {
           const px = clamp(Math.round((tx - ox) / scale), 0, iw - 1);
           const py = clamp(Math.round((ty - oy) / scale), 0, ih - 1);
-          lum = pixelWeight(data, iw, ih, px, py);
+          lum = pixelWeight(data, iw, ih, px, py) * 0.48;
         }
         const h1 = Math.sin(i * 127.1 + j * 311.7) * 43758.5453;
         const h2 = Math.sin(j * 269.5 + i * 183.3) * 43758.5453;
         const u = h1 - Math.floor(h1);
         const v = h2 - Math.floor(h2);
         const ang = u * Math.PI * 2;
-        const mag = (0.3 + v) * sep * 1.35;
+        const mag = (0.3 + v) * sep * 0.42;
         const o = n * STRIDE;
         points[o] = tx;
         points[o + 1] = ty;
@@ -175,7 +175,7 @@
     if (!last) last = now;
     const dt = Math.min(34, now - last);
     last = now;
-    time += dt * 0.001;
+    time += dt * 0.00038;
     displayP += (targetP - displayP) * 0.11;
 
     const p = displayP;
@@ -198,10 +198,10 @@
     }
     if (!points || !count) return;
 
-    const amp = Math.min(cssW, cssH) * 0.017 * wave;
+    const amp = Math.min(cssW, cssH) * 0.006 * wave;
     const t = time;
     ctx.clearRect(0, 0, cssW, cssH);
-    ctx.fillStyle = "#fff";
+    ctx.fillStyle = "rgba(255,255,255,.62)";
 
     const place = (n, x, y) => {
       xy[n * 2] = x;
@@ -221,7 +221,7 @@
       const y = points[o + 1] + points[o + 3] * scatter + (Math.sin(col * 0.42 + t * 1.2) + Math.sin(row * 0.34 + t * 0.92)) * amp;
       place(n, x, y);
       const srcA = lum;
-      const a = (srcA * (1 - mix) + 0.72 * mix) * fadeIn;
+      const a = (srcA * (1 - mix) + 0.28 * mix) * fadeIn * 0.55;
       const bin = a <= 0.045 ? 0 : Math.min(BINS - 1, Math.ceil(a * (BINS - 1)));
       bins[n] = bin;
       binCount[bin] += 1;

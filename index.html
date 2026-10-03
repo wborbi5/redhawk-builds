@@ -18,6 +18,21 @@
   <meta name="twitter:image" content="https://redhawk-builds.vercel.app/assets/og.png">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" as="image" href="assets/hero/mcvey-cartoon-dark.webp" type="image/webp" fetchpriority="high" crossorigin="anonymous">
+  <style>
+    /* Hero layout that applies with the document, with or without scene.css or JavaScript. */
+    .hero-pin{position:relative;height:100vh;height:100svh;min-height:100vh;overflow:hidden}
+    .hero-photo,.hero-photo picture,.hero-photo img{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;max-width:none;max-height:none}
+    .hero-photo{background:#07080c url("assets/hero/mcvey-cartoon-dark.jpg") center/cover no-repeat}
+    .hero-photo img{object-fit:cover;object-position:center center}
+    .hero-copy{position:absolute;top:0;right:0;bottom:0;left:0;display:flex;flex-direction:column;align-items:stretch;justify-content:space-between;text-align:center;min-width:0;width:100%;overflow:hidden}
+    .hero-top,.hero-foot{width:100%;max-width:100%;min-width:0;margin-inline:auto}
+    .logo-chip{display:flex;align-items:center;justify-content:center;overflow:hidden;flex:0 0 auto;background:#fff}
+    .logo-chip img{display:block;width:auto;height:auto;max-width:100%;max-height:100%;min-width:0;min-height:0;object-fit:contain}
+    .hosted .logo-chip{width:132px;height:96px}
+    .hosted .logo-chip img{width:auto;height:76px;max-height:76px}
+    .host .logo-chip{width:96px;height:96px}
+    .host .logo-chip img{width:auto;height:72px;max-width:100%;max-height:72px}
+  </style>
   <link rel="stylesheet" href="scene.css">
   <script>document.documentElement.classList.remove("no-js");</script>
 </head>
@@ -44,20 +59,48 @@
           <img src="assets/hero/mcvey-cartoon-dark.jpg" alt="" width="1280" height="720" fetchpriority="high" decoding="async" crossorigin="anonymous">
         </picture>
       </div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="market" aria-hidden="true">
+        <svg class="sparks" viewBox="0 0 1440 420" preserveAspectRatio="none" focusable="false">
+          <path d="M-40 250 H160 L240 210 H420 L520 150 H700 L800 90 H980 L1080 50 H1260 L1440 16"/>
+          <path d="M-20 140 H140 L220 118 H380 L470 78 H640 L760 48 H940"/>
+          <path d="M80 330 H260 L360 300 H540 L660 250 H860 L1000 220 H1220 L1400 180"/>
+        </svg>
+        <div class="market-row">
+          <div class="market-track">
+            <span>$RHB <b class="up">+18.89</b></span><span>BUILD <b class="up">+4.20</b></span><span>SHIP <b class="up">+2.06</b></span><span>PITCH <b class="dn">−0.84</b></span><span>LEARN <b class="up">+1.12</b></span><span>MCVY <b class="up">+0.55</b></span><span>OXFD <b class="up">+3.08</b></span><span>HACK <b class="up">+6.40</b></span><span>TEAM <b class="up">+1.77</b></span><span>DEMO <b class="dn">−0.31</b></span>
+            <span>$RHB <b class="up">+18.89</b></span><span>BUILD <b class="up">+4.20</b></span><span>SHIP <b class="up">+2.06</b></span><span>PITCH <b class="dn">−0.84</b></span><span>LEARN <b class="up">+1.12</b></span><span>MCVY <b class="up">+0.55</b></span><span>OXFD <b class="up">+3.08</b></span><span>HACK <b class="up">+6.40</b></span><span>TEAM <b class="up">+1.77</b></span><span>DEMO <b class="dn">−0.31</b></span>
+          </div>
+        </div>
+        <div class="market-row market-rev">
+          <div class="market-track">
+            <span>PITCH <b class="up">+0.62</b></span><span>SHIP <b class="dn">−1.04</b></span><span>BUILD <b class="up">+3.15</b></span><span>$RHB <b class="up">+18.89</b></span><span>HACK <b class="up">+2.44</b></span><span>DEMO <b class="up">+0.90</b></span><span>TEAM <b class="dn">−0.48</b></span><span>OXFD <b class="up">+1.20</b></span><span>LEARN <b class="up">+5.02</b></span><span>MCVY <b class="dn">−0.22</b></span>
+            <span>PITCH <b class="up">+0.62</b></span><span>SHIP <b class="dn">−1.04</b></span><span>BUILD <b class="up">+3.15</b></span><span>$RHB <b class="up">+18.89</b></span><span>HACK <b class="up">+2.44</b></span><span>DEMO <b class="up">+0.90</b></span><span>TEAM <b class="dn">−0.48</b></span><span>OXFD <b class="up">+1.20</b></span><span>LEARN <b class="up">+5.02</b></span><span>MCVY <b class="dn">−0.22</b></span>
+          </div>
+        </div>
+      </div>
       <div class="hero-copy">
         <div class="hero-top">
           <h1>Redhawk<br>Builds</h1>
           <p class="hero-tagline">Where Finance and Technology Intersect</p>
           <p class="hero-meta">Nov 6 to 8, 2026 · McVey Data Science Building</p>
+          <div class="rhb-chip" role="img" aria-label="Illustrative ticker, $RHB up 18.89. Not live market data.">
+            <span class="rhb-sym">$RHB</span>
+            <span class="rhb-chg">+18.89</span>
+            <svg class="rhb-spark" viewBox="0 0 260 52" aria-hidden="true" focusable="false">
+              <path d="M1 49 H30 L48 42 H76 L98 34 H126 L150 24 H176 L195 15 H221 L240 3 H259"/>
+              <circle cx="259" cy="3" r="4.5"/>
+            </svg>
+          </div>
         </div>
         <div class="hero-foot">
           <div class="hosted">
             <p class="hosted-label">Hosted by</p>
             <ul>
-              <li><a class="logo-chip" href="https://www.sepiatmiami.com/screens/home.html" data-link="SEPI_URL"><img src="assets/logos/sepi.png" alt="Sigma Eta Pi" width="583" height="577"></a></li>
-              <li><a class="logo-chip" href="https://www.muibc.com/" data-link="BANKING_URL"><img src="assets/logos/banking-club.png" alt="Miami Banking Club" width="355" height="417"></a></li>
-              <li><a class="logo-chip" href="https://mubc.io/" data-link="MUBC_URL"><img src="assets/logos/mubc.png" alt="MUBC" width="156" height="162"></a></li>
-              <li><a class="logo-chip" href="https://www.redhawkappliedai.club/" data-link="AI_URL"><img src="assets/logos/redhawk-applied-ai.png" alt="RedHawk Applied AI" width="148" height="147"></a></li>
+              <li><a class="logo-chip" href="https://www.sepiatmiami.com/screens/home.html" data-link="SEPI_URL"><img src="assets/logos/sepi.png" alt="Sigma Eta Pi" width="112" height="80"></a></li>
+              <li><a class="logo-chip" href="https://www.muibc.com/" data-link="BANKING_URL"><img src="assets/logos/banking-club.png" alt="Miami Banking Club" width="112" height="80"></a></li>
+              <li><a class="logo-chip" href="https://mubc.io/" data-link="MUBC_URL"><img src="assets/logos/mubc.png" alt="MUBC" width="112" height="80"></a></li>
+              <li><a class="logo-chip" href="https://www.redhawkappliedai.club/" data-link="AI_URL"><img src="assets/logos/redhawk-applied-ai.png" alt="RedHawk Applied AI" width="112" height="80"></a></li>
             </ul>
           </div>
           <a class="scroll-cue" href="#weekend"><span>Scroll</span><i aria-hidden="true"></i></a>
@@ -67,6 +110,20 @@
   </div>
 
   <main id="main" class="site">
+    <div class="market market-field" aria-hidden="true">
+      <div class="market-row">
+        <div class="market-track">
+          <span>$RHB <b class="up">+18.89</b></span><span>BUILD <b class="up">+4.20</b></span><span>SHIP <b class="up">+2.06</b></span><span>PITCH <b class="dn">−0.84</b></span><span>LEARN <b class="up">+1.12</b></span><span>HACK <b class="up">+6.40</b></span><span>TEAM <b class="up">+1.77</b></span><span>DEMO <b class="dn">−0.31</b></span>
+          <span>$RHB <b class="up">+18.89</b></span><span>BUILD <b class="up">+4.20</b></span><span>SHIP <b class="up">+2.06</b></span><span>PITCH <b class="dn">−0.84</b></span><span>LEARN <b class="up">+1.12</b></span><span>HACK <b class="up">+6.40</b></span><span>TEAM <b class="up">+1.77</b></span><span>DEMO <b class="dn">−0.31</b></span>
+        </div>
+      </div>
+      <div class="market-row market-rev">
+        <div class="market-track">
+          <span>OXFD <b class="up">+3.08</b></span><span>MCVY <b class="up">+0.55</b></span><span>SHIP <b class="dn">−1.04</b></span><span>BUILD <b class="up">+3.15</b></span><span>$RHB <b class="up">+18.89</b></span><span>PITCH <b class="up">+0.62</b></span><span>DEMO <b class="up">+0.90</b></span><span>LEARN <b class="up">+5.02</b></span>
+          <span>OXFD <b class="up">+3.08</b></span><span>MCVY <b class="up">+0.55</b></span><span>SHIP <b class="dn">−1.04</b></span><span>BUILD <b class="up">+3.15</b></span><span>$RHB <b class="up">+18.89</b></span><span>PITCH <b class="up">+0.62</b></span><span>DEMO <b class="up">+0.90</b></span><span>LEARN <b class="up">+5.02</b></span>
+        </div>
+      </div>
+    </div>
     <section class="band" id="weekend">
       <header class="band-head">
         <p class="eyebrow">The weekend</p>
@@ -244,24 +301,24 @@
       </header>
       <div class="grid grid-4 hosts">
         <a class="spot host" href="https://www.sepiatmiami.com/screens/home.html" data-link="SEPI_URL" target="_blank" rel="noopener">
-          <span class="logo-chip"><img src="assets/logos/sepi.png" alt="" width="583" height="577"></span>
+          <span class="logo-chip"><img src="assets/logos/sepi.png" alt="" width="72" height="72"></span>
           <h3>Sigma Eta Pi</h3>
           <p>Entrepreneurship fraternity</p>
         </a>
         <a class="spot host" href="https://www.muibc.com/" data-link="BANKING_URL" target="_blank" rel="noopener">
-          <span class="logo-chip"><img src="assets/logos/banking-club.png" alt="" width="355" height="417"></span>
+          <span class="logo-chip"><img src="assets/logos/banking-club.png" alt="" width="72" height="72"></span>
           <h3>Miami Banking Club</h3>
-          <p>Miami University</p>
+          <p>Finance and banking</p>
         </a>
         <a class="spot host" href="https://mubc.io/" data-link="MUBC_URL" target="_blank" rel="noopener">
-          <span class="logo-chip"><img src="assets/logos/mubc.png" alt="" width="156" height="162"></span>
+          <span class="logo-chip"><img src="assets/logos/mubc.png" alt="" width="72" height="72"></span>
           <h3>MUBC</h3>
           <p>Miami University Blockchain Club</p>
         </a>
         <a class="spot host" href="https://www.redhawkappliedai.club/" data-link="AI_URL" target="_blank" rel="noopener">
-          <span class="logo-chip"><img src="assets/logos/redhawk-applied-ai.png" alt="" width="148" height="147"></span>
+          <span class="logo-chip"><img src="assets/logos/redhawk-applied-ai.png" alt="" width="72" height="72"></span>
           <h3>RedHawk Applied AI</h3>
-          <p>Student organization</p>
+          <p>Applied AI at Miami</p>
         </a>
       </div>
     </section>
