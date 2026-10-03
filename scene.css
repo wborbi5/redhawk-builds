@@ -80,7 +80,8 @@ a.btn:not([href]):hover{background:var(--red)}
   font-size:clamp(18px,2vw,26px);font-weight:600;letter-spacing:-.03em;line-height:1.15;
 }
 .hero-meta{margin-top:8px;color:rgba(255,255,255,.86);font-size:14px}
-.hosted{margin-top:18px}
+.hero-foot{display:flex;flex-direction:column;align-items:center;gap:12px;width:min(1080px,100%)}
+.hosted{margin-top:0}
 .hosted-label{
   margin-bottom:10px;
   font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
@@ -100,7 +101,7 @@ a.btn:not([href]):hover{background:var(--red)}
 }
 .logo-chip img{height:84px;width:auto;max-width:168px;object-fit:contain}
 .scroll-cue{
-  pointer-events:auto;margin-top:16px;
+  pointer-events:auto;margin-top:0;
   display:flex;flex-direction:column;align-items:center;gap:8px;
   text-decoration:none;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
   text-shadow:0 2px 10px rgba(0,0,0,.7);
@@ -186,7 +187,7 @@ a.btn:not([href]):hover{background:var(--red)}
   .hero-copy{padding:72px 14px calc(88px + env(safe-area-inset-bottom))}
   .hero-copy h1{font-size:52px}
   .hero-tagline{font-size:18px}
-  .hosted{margin-top:14px}
+  .hero-foot{gap:10px}
   .logo-chip,.host .logo-chip{height:76px;min-width:72px;padding:8px 10px;border-radius:14px}
   .logo-chip img,.host .logo-chip img{height:60px;max-width:108px}
   .grid-3,.grid-2,.grid-4,.days{grid-template-columns:1fr}
