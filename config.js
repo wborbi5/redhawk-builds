@@ -5,9 +5,8 @@ window.RHB_CONFIG = {
   GROUPME_URL: "https://groupme.com/join_group/117611640/eJ9Vozza",
   SEPI_URL: "https://www.sepiatmiami.com/screens/home.html",
   BANKING_URL: "https://www.muibc.com/",
+  MUBC_URL: "https://mubc.io/",
   AI_URL: "https://www.redhawkappliedai.club/",
-  // Leave blank until a real sponsor inbox exists. Do not invent one.
-  SPONSOR_EMAIL: "",
   CONTACT_EMAIL: "",
   SITE_URL: "https://redhawk-builds.vercel.app",
   // Prize amounts live here only. Change these and the page follows.
@@ -15,6 +14,5 @@ window.RHB_CONFIG = {
     { place: "1st place", amount: 2000 },
     { place: "2nd place", amount: 1000 },
     { place: "3rd place", amount: 500 }
-  ],
-  bestUseNote: "Sponsor Best Use awards are TBA."
+  ]
 };

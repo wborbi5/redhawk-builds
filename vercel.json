@@ -10,7 +10,7 @@
       ]
     },
     {
-      "source": "/assets/hero/(.*)",
+      "source": "/assets/(hero|logos)/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=604800" }
       ]

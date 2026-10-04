@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#07080c">
   <title>Redhawk Builds | Nov 6 to 8, 2026 · Miami University</title>
-  <meta name="description" content="Where finance and technology intersect. A free hackathon for Miami students at the McVey Data Science Building, Nov 6 to 8, 2026.">
+  <meta name="description" content="A Miami University student hackathon with the Farmer School of Business. Nov 6 to 8, 2026, at the McVey Data Science Building on Miami's Oxford campus.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Redhawk Builds · Where finance and technology intersect">
   <meta property="og:description" content="Nov 6 to 8, 2026. McVey Data Science Building, Miami University. Free for Miami students.">
@@ -17,98 +17,141 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://redhawk-builds.vercel.app/assets/og.png">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="preload" as="image" href="assets/hero/frame-1.webp" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/hero/mcvey-cartoon-dark.webp" type="image/webp" fetchpriority="high" crossorigin="anonymous">
+  <style>
+    /* Hero layout that applies with the document, with or without scene.css or JavaScript. */
+    .hero-pin{position:relative;height:100vh;height:100svh;min-height:100vh;overflow:hidden}
+    .hero-photo,.hero-photo picture,.hero-photo img{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;max-width:none;max-height:none}
+    .hero-photo{background:#07080c url("assets/hero/mcvey-cartoon-dark.jpg") center/cover no-repeat}
+    .hero-photo img{object-fit:cover;object-position:center center}
+    .hero-copy{position:absolute;top:0;right:0;bottom:0;left:0;display:flex;flex-direction:column;align-items:stretch;justify-content:space-between;text-align:center;min-width:0;width:100%;overflow:hidden}
+    .hero-top,.hero-foot{width:100%;max-width:100%;min-width:0;margin-inline:auto}
+    .logo-chip{display:flex;align-items:center;justify-content:center;overflow:hidden;flex:0 0 auto;background:#fff}
+    .logo-chip img{display:block;width:auto;height:auto;max-width:100%;max-height:100%;min-width:0;min-height:0;object-fit:contain}
+    .hosted .logo-chip{width:132px;height:96px}
+    .hosted .logo-chip img{width:auto;height:76px;max-height:76px}
+    .host .logo-chip{width:96px;height:96px}
+    .host .logo-chip img{width:auto;height:72px;max-width:100%;max-height:72px}
+  </style>
   <link rel="stylesheet" href="scene.css">
   <script>document.documentElement.classList.remove("no-js");</script>
 </head>
 <body id="top">
   <a class="skip" href="#main">Skip to content</a>
   <header class="mast on-hero">
-    <h1 class="wordmark"><a href="#top">Redhawk<br>Builds</a></h1>
+    <a class="wordmark" href="#top">Redhawk<br>Builds</a>
     <nav aria-label="Main">
       <a href="#weekend">Weekend</a>
       <a href="#schedule">Schedule</a>
       <a href="#prizes">Prizes</a>
       <a href="#faq">FAQ</a>
+      <a href="#register">Register</a>
     </nav>
     <a class="btn btn-small" href="https://docs.google.com/forms/d/e/1FAIpQLScEPdZW1_kBf0A8Ke2lWXd7GGR5c7ZGH3eJiWm--uUlJQguMQ/viewform" data-link="REGISTER_URL">Register</a>
   </header>
   <a class="dock btn" href="https://docs.google.com/forms/d/e/1FAIpQLScEPdZW1_kBf0A8Ke2lWXd7GGR5c7ZGH3eJiWm--uUlJQguMQ/viewform" data-link="REGISTER_URL">Register</a>
+  <canvas id="field" aria-hidden="true"></canvas>
 
-  <div class="walk" id="walk">
-    <div class="walk-pin">
-      <div class="stage" aria-hidden="true">
-        <!-- Opening shot: replace assets/hero/frame-1.webp to swap this frame. -->
-        <div class="frame" data-frame="0" style="--ox:61%;--oy:58%">
-          <img src="assets/hero/frame-1.webp" alt="" width="1280" height="720" fetchpriority="high" decoding="async">
-        </div>
-        <div class="frame" data-frame="1" style="--ox:50%;--oy:64%">
-          <picture>
-            <source srcset="assets/hero/frame-2.avif" type="image/avif">
-            <img src="assets/hero/frame-2.webp" alt="" width="1280" height="720" decoding="async">
-          </picture>
-        </div>
-        <div class="frame" data-frame="2" style="--ox:50%;--oy:48%">
-          <picture>
-            <source srcset="assets/hero/frame-3.avif" type="image/avif">
-            <img src="assets/hero/frame-3.webp" alt="" width="1280" height="720" decoding="async">
-          </picture>
-        </div>
-        <div class="frame" data-frame="3" style="--ox:50%;--oy:42%">
-          <picture>
-            <source srcset="assets/hero/frame-4.avif" type="image/avif">
-            <img src="assets/hero/frame-4.webp" alt="" width="1280" height="720" decoding="async">
-          </picture>
-        </div>
-        <div class="bloom"></div>
-        <div class="veil"></div>
-        <div class="shade shade-top"></div>
-        <div class="shade shade-bottom"></div>
+  <div class="hero-scroll" id="hero">
+    <div class="hero-pin">
+      <div class="hero-photo">
+        <picture>
+          <source srcset="assets/hero/mcvey-cartoon-dark.webp" type="image/webp">
+          <img src="assets/hero/mcvey-cartoon-dark.jpg" alt="" width="1280" height="720" fetchpriority="high" decoding="async" crossorigin="anonymous">
+        </picture>
       </div>
-      <div class="walk-ui">
-        <div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="market" aria-hidden="true">
+        <svg class="sparks" viewBox="0 0 1440 420" preserveAspectRatio="none" focusable="false">
+          <path d="M-40 250 H160 L240 210 H420 L520 150 H700 L800 90 H980 L1080 50 H1260 L1440 16"/>
+          <path d="M-20 140 H140 L220 118 H380 L470 78 H640 L760 48 H940"/>
+          <path d="M80 330 H260 L360 300 H540 L660 250 H860 L1000 220 H1220 L1400 180"/>
+        </svg>
+        <div class="market-row">
+          <div class="market-track">
+            <span>$RHB <b class="up">+18.89</b></span><span>BUILD <b class="up">+4.20</b></span><span>SHIP <b class="up">+2.06</b></span><span>PITCH <b class="dn">−0.84</b></span><span>LEARN <b class="up">+1.12</b></span><span>MCVY <b class="up">+0.55</b></span><span>OXFD <b class="up">+3.08</b></span><span>HACK <b class="up">+6.40</b></span><span>TEAM <b class="up">+1.77</b></span><span>DEMO <b class="dn">−0.31</b></span>
+            <span>$RHB <b class="up">+18.89</b></span><span>BUILD <b class="up">+4.20</b></span><span>SHIP <b class="up">+2.06</b></span><span>PITCH <b class="dn">−0.84</b></span><span>LEARN <b class="up">+1.12</b></span><span>MCVY <b class="up">+0.55</b></span><span>OXFD <b class="up">+3.08</b></span><span>HACK <b class="up">+6.40</b></span><span>TEAM <b class="up">+1.77</b></span><span>DEMO <b class="dn">−0.31</b></span>
+          </div>
+        </div>
+        <div class="market-row market-rev">
+          <div class="market-track">
+            <span>PITCH <b class="up">+0.62</b></span><span>SHIP <b class="dn">−1.04</b></span><span>BUILD <b class="up">+3.15</b></span><span>$RHB <b class="up">+18.89</b></span><span>HACK <b class="up">+2.44</b></span><span>DEMO <b class="up">+0.90</b></span><span>TEAM <b class="dn">−0.48</b></span><span>OXFD <b class="up">+1.20</b></span><span>LEARN <b class="up">+5.02</b></span><span>MCVY <b class="dn">−0.22</b></span>
+            <span>PITCH <b class="up">+0.62</b></span><span>SHIP <b class="dn">−1.04</b></span><span>BUILD <b class="up">+3.15</b></span><span>$RHB <b class="up">+18.89</b></span><span>HACK <b class="up">+2.44</b></span><span>DEMO <b class="up">+0.90</b></span><span>TEAM <b class="dn">−0.48</b></span><span>OXFD <b class="up">+1.20</b></span><span>LEARN <b class="up">+5.02</b></span><span>MCVY <b class="dn">−0.22</b></span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-copy">
+        <div class="hero-top">
+          <h1>Redhawk<br>Builds</h1>
           <p class="hero-tagline">Where Finance and Technology Intersect</p>
           <p class="hero-meta">Nov 6 to 8, 2026 · McVey Data Science Building</p>
+          <div class="rhb-chip" role="img" aria-label="Illustrative ticker, $RHB up 18.89. Not live market data.">
+            <span class="rhb-sym">$RHB</span>
+            <span class="rhb-chg">+18.89</span>
+            <svg class="rhb-spark" viewBox="0 0 260 52" aria-hidden="true" focusable="false">
+              <path d="M1 49 H30 L48 42 H76 L98 34 H126 L150 24 H176 L195 15 H221 L240 3 H259"/>
+              <circle cx="259" cy="3" r="4.5"/>
+            </svg>
+          </div>
         </div>
-        <a class="scroll-cue" href="#portal"><span>Scroll to walk in</span><i aria-hidden="true"></i></a>
+        <div class="hero-foot">
+          <div class="hosted">
+            <p class="hosted-label">Hosted by</p>
+            <ul>
+              <li><a class="logo-chip" href="https://www.sepiatmiami.com/screens/home.html" data-link="SEPI_URL"><img src="assets/logos/sepi.png" alt="Sigma Eta Pi" width="112" height="80"></a></li>
+              <li><a class="logo-chip" href="https://www.muibc.com/" data-link="BANKING_URL"><img src="assets/logos/banking-club.png" alt="Miami Banking Club" width="112" height="80"></a></li>
+              <li><a class="logo-chip" href="https://mubc.io/" data-link="MUBC_URL"><img src="assets/logos/mubc.png" alt="MUBC" width="112" height="80"></a></li>
+              <li><a class="logo-chip" href="https://www.redhawkappliedai.club/" data-link="AI_URL"><img src="assets/logos/redhawk-applied-ai.png" alt="RedHawk Applied AI" width="112" height="80"></a></li>
+            </ul>
+          </div>
+          <a class="scroll-cue" href="#weekend"><span>Scroll</span><i aria-hidden="true"></i></a>
+        </div>
       </div>
     </div>
   </div>
 
-  <section class="portal" id="portal" aria-label="Enter the weekend">
-    <div class="portal-pin">
-      <img class="portal-atrium" src="assets/hero/frame-4.webp" alt="" width="1280" height="720">
-      <div class="portal-stage">
-        <p class="eyebrow">Inside McVey</p>
-        <h2>The room is open.</h2>
-        <p class="lede">Free for Miami students. Any major, any skill level.</p>
-      </div>
-      <div class="portal-cover" aria-hidden="true"></div>
-    </div>
-  </section>
-
   <main id="main" class="site">
+    <div class="market market-field" aria-hidden="true">
+      <div class="market-row">
+        <div class="market-track">
+          <span>$RHB <b class="up">+18.89</b></span><span>BUILD <b class="up">+4.20</b></span><span>SHIP <b class="up">+2.06</b></span><span>PITCH <b class="dn">−0.84</b></span><span>LEARN <b class="up">+1.12</b></span><span>HACK <b class="up">+6.40</b></span><span>TEAM <b class="up">+1.77</b></span><span>DEMO <b class="dn">−0.31</b></span>
+          <span>$RHB <b class="up">+18.89</b></span><span>BUILD <b class="up">+4.20</b></span><span>SHIP <b class="up">+2.06</b></span><span>PITCH <b class="dn">−0.84</b></span><span>LEARN <b class="up">+1.12</b></span><span>HACK <b class="up">+6.40</b></span><span>TEAM <b class="up">+1.77</b></span><span>DEMO <b class="dn">−0.31</b></span>
+        </div>
+      </div>
+      <div class="market-row market-rev">
+        <div class="market-track">
+          <span>OXFD <b class="up">+3.08</b></span><span>MCVY <b class="up">+0.55</b></span><span>SHIP <b class="dn">−1.04</b></span><span>BUILD <b class="up">+3.15</b></span><span>$RHB <b class="up">+18.89</b></span><span>PITCH <b class="up">+0.62</b></span><span>DEMO <b class="up">+0.90</b></span><span>LEARN <b class="up">+5.02</b></span>
+          <span>OXFD <b class="up">+3.08</b></span><span>MCVY <b class="up">+0.55</b></span><span>SHIP <b class="dn">−1.04</b></span><span>BUILD <b class="up">+3.15</b></span><span>$RHB <b class="up">+18.89</b></span><span>PITCH <b class="up">+0.62</b></span><span>DEMO <b class="up">+0.90</b></span><span>LEARN <b class="up">+5.02</b></span>
+        </div>
+      </div>
+    </div>
     <section class="band" id="weekend">
       <header class="band-head">
         <p class="eyebrow">The weekend</p>
         <h2>Build where finance and technology intersect.</h2>
-        <p>A hackathon at Miami University. Students ship fintech and AI products in teams, over one weekend at McVey.</p>
+        <p>A Miami University student hackathon with the Farmer School of Business. McVey Data Science Building is on Miami's Oxford campus.</p>
       </header>
+      <div class="school-row">
+        <a class="logo-chip school-chip" href="https://miamioh.edu/">
+          <img src="assets/logos/miami-university.svg" alt="Miami University" width="200" height="48">
+        </a>
+        <a class="logo-chip school-chip school-word" href="https://miamioh.edu/fsb/">Farmer School of Business</a>
+      </div>
       <div class="grid grid-3">
         <article class="spot">
           <p class="spot-kicker">Dates</p>
           <h3>Nov 6 to 8, 2026</h3>
-          <p>Friday through Sunday. All times are Eastern.</p>
+          <p>Friday through Sunday. All times Eastern.</p>
         </article>
         <article class="spot">
           <p class="spot-kicker">Venue</p>
           <h3>McVey Data Science Building</h3>
-          <p>Miami University, Oxford, Ohio.</p>
+          <p>On Miami's Oxford campus.</p>
         </article>
         <article class="spot">
           <p class="spot-kicker">Who</p>
           <h3>About 100 students</h3>
-          <p>About 25 teams. Up to 4 people. Solo builders get matched at the Friday mixer.</p>
+          <p>Teams up to 4. Solo is fine. Mixer Saturday at 10 if you need a team.</p>
         </article>
       </div>
     </section>
@@ -116,28 +159,38 @@
     <section class="band" id="perks">
       <header class="band-head">
         <p class="eyebrow">Perks</p>
-        <h2>While you are here.</h2>
+        <h2>What you leave with.</h2>
       </header>
-      <div class="grid grid-4">
+      <div class="grid grid-3">
         <article class="spot">
           <p class="spot-kicker">01</p>
-          <h3>Meals</h3>
-          <p>Food all weekend.</p>
+          <h3>Launch something real</h3>
+          <p>Ship a project in a weekend. Take it to interviews and applications.</p>
         </article>
         <article class="spot">
           <p class="spot-kicker">02</p>
-          <h3>Event shirt</h3>
-          <p>One for every student.</p>
+          <h3>Learn to build with AI</h3>
+          <p>Workshops Friday night. Mentors in the room on Saturday, even if you have never coded.</p>
         </article>
         <article class="spot">
           <p class="spot-kicker">03</p>
-          <h3>API credits</h3>
-          <p>For every team. Sponsors TBA.</p>
+          <h3>Pitch for cash</h3>
+          <p data-perk-prizes>1st place $2,000. 2nd place $1,000. 3rd place $500.</p>
         </article>
         <article class="spot">
           <p class="spot-kicker">04</p>
-          <h3>People in the room</h3>
-          <p>Workshops, mentors, and judges from industry.</p>
+          <h3>Free food</h3>
+          <p>Six meals, plus snacks, coffee, and water. Dietary options are labeled. Note yours on the registration form.</p>
+        </article>
+        <article class="spot">
+          <p class="spot-kicker">05</p>
+          <h3>Free shirt</h3>
+          <p>A Redhawk Builds shirt is yours.</p>
+        </article>
+        <article class="spot">
+          <p class="spot-kicker">06</p>
+          <h3>Meet builders</h3>
+          <p>Other people at Miami who like to build.</p>
         </article>
       </div>
     </section>
@@ -145,10 +198,9 @@
     <section class="band" id="prizes">
       <header class="band-head">
         <p class="eyebrow">Prizes</p>
-        <h2>What you are building toward.</h2>
-        <p>Amounts are still under review. The figures below are the current plan.</p>
+        <h2>Cash for the top three.</h2>
       </header>
-      <div class="grid grid-4">
+      <div class="grid grid-3">
         <article class="spot prize" data-prize="0">
           <p class="spot-kicker" data-prize-label>1st place</p>
           <p class="spot-money" data-prize-amount>$2,000</p>
@@ -161,81 +213,91 @@
           <p class="spot-kicker" data-prize-label>3rd place</p>
           <p class="spot-money" data-prize-amount>$500</p>
         </article>
-        <article class="spot">
-          <p class="spot-kicker">Best Use</p>
-          <h3 data-best-use>Sponsor Best Use awards are TBA.</h3>
-        </article>
       </div>
     </section>
 
     <section class="band" id="schedule">
       <header class="band-head">
         <p class="eyebrow">Schedule</p>
-        <h2>Three days. Draft times.</h2>
-        <p>Eastern time, in Oxford. This clock can still move.</p>
+        <h2>Three days.</h2>
+        <p>All times Eastern.</p>
       </header>
       <div class="grid days">
         <article class="spot">
           <p class="spot-kicker">Friday</p>
           <h3>Nov 6</h3>
           <ol class="times">
-            <li><time datetime="2026-11-06T17:00">5:00 PM</time><span>Check-in opens</span></li>
-            <li><time datetime="2026-11-06T18:00">6:00 PM</time><span>Dinner</span></li>
-            <li><time datetime="2026-11-06T18:45">6:45 PM</time><span>Opening ceremony</span></li>
-            <li><time datetime="2026-11-06T19:30">7:30 PM</time><span>Team formation mixer</span></li>
-            <li><time datetime="2026-11-06T20:00">8:00 PM</time><span>Hacking starts</span></li>
-            <li><time datetime="2026-11-06T20:30">8:30 PM</time><span>Workshop, building with AI APIs</span></li>
-            <li><time datetime="2026-11-06T21:30">9:30 PM</time><span>Workshop, the data sandbox</span></li>
-            <li><time datetime="2026-11-06T23:59">11:59 PM</time><span>Late snack</span></li>
+            <li><time datetime="2026-11-06T17:00">5:00 PM</time><span>Dinner and check-in</span></li>
+            <li><time datetime="2026-11-06T17:25">5:25 PM</time><span>Welcome</span></li>
+            <li><time datetime="2026-11-06T17:35">5:35 to 6:35</time><span>Workshop round one. Room A: building setup and rapid prototyping. Room B: picking a business problem and scoping a project.</span></li>
+            <li><time datetime="2026-11-06T18:45">6:45 to 7:45</time><span>Workshop round two. Room A: AI APIs and document workflows. Room B: financial data and checking outputs.</span></li>
+            <li><time datetime="2026-11-06T19:45">7:45 PM</time><span>Wrap-up</span></li>
+            <li><time datetime="2026-11-06T20:00">8:00 PM</time><span>Done for the night</span></li>
           </ol>
+          <p class="day-note">Two workshops run at once, so teams can split up. Materials from all four get shared after.</p>
         </article>
         <article class="spot">
           <p class="spot-kicker">Saturday</p>
           <h3>Nov 7</h3>
           <ol class="times">
-            <li><time datetime="2026-11-07T08:30">8:30 AM</time><span>Breakfast</span></li>
-            <li><time datetime="2026-11-07T10:00">10:00 AM</time><span>Workshop, fintech 101</span></li>
-            <li><time datetime="2026-11-07T11:00">11:00 AM</time><span>Mentor office hours, until 4:00 PM</span></li>
-            <li><time datetime="2026-11-07T12:30">12:30 PM</time><span>Lunch</span></li>
-            <li><time datetime="2026-11-07T14:00">2:00 PM</time><span>Workshop, pitching and demos</span></li>
-            <li><time datetime="2026-11-07T15:00">3:00 PM</time><span>Midpoint check-in</span></li>
-            <li><time datetime="2026-11-07T18:30">6:30 PM</time><span>Dinner</span></li>
-            <li><time datetime="2026-11-07T21:00">9:00 PM</time><span>Office hours, round 2</span></li>
-            <li><time datetime="2026-11-07T23:59">11:59 PM</time><span>Midnight snack</span></li>
+            <li><time datetime="2026-11-07T09:00">9:00 AM</time><span>Breakfast and check-in</span></li>
+            <li><time datetime="2026-11-07T09:30">9:30 AM</time><span>Opening ceremony</span></li>
+            <li><time datetime="2026-11-07T10:00">10:00 AM</time><span>Building starts, plus a team mixer if you do not have a team</span></li>
+            <li><time datetime="2026-11-07T12:00">Noon</time><span>Lunch</span></li>
+            <li><time datetime="2026-11-07T15:00">3:00 PM</time><span>Snacks and progress check</span></li>
+            <li><time datetime="2026-11-07T18:00">6:00 PM</time><span>Dinner</span></li>
+            <li><time datetime="2026-11-07T21:00">9:00 PM</time><span>Evening snack</span></li>
+            <li><time datetime="2026-11-07T22:00">10:00 PM</time><span>Venue closes</span></li>
           </ol>
         </article>
         <article class="spot">
           <p class="spot-kicker">Sunday</p>
           <h3>Nov 8</h3>
           <ol class="times">
-            <li><time datetime="2026-11-08T08:00">8:00 AM</time><span>Breakfast</span></li>
-            <li><time datetime="2026-11-08T10:00">10:00 AM</time><span>Submissions close on Devpost</span></li>
-            <li><time datetime="2026-11-08T10:15">10:15 AM</time><span>Expo judging</span></li>
-            <li><time datetime="2026-11-08T12:30">12:30 PM</time><span>Finalists announced</span></li>
-            <li><time datetime="2026-11-08T13:00">1:00 PM</time><span>Finals. Top 5 teams, 4 minute pitch and 3 minutes of Q&amp;A each.</span></li>
-            <li><time datetime="2026-11-08T14:15">2:15 PM</time><span>Awards</span></li>
-            <li><time datetime="2026-11-08T14:45">2:45 PM</time><span>Closing and group photo</span></li>
+            <li><time datetime="2026-11-08T08:30">8:30 AM</time><span>Doors and breakfast</span></li>
+            <li><time datetime="2026-11-08T10:00">10:00 AM</time><span>Devpost submissions due</span></li>
+            <li><time datetime="2026-11-08T10:30">10:30 to 11:30</time><span>Expo judging at your table</span></li>
+            <li><time datetime="2026-11-08T11:30">11:30 AM</time><span>Lunch and audience vote</span></li>
+            <li><time datetime="2026-11-08T12:00">Noon</time><span>Finalists announced</span></li>
+            <li><time datetime="2026-11-08T13:00">1:00 PM</time><span>Finals</span></li>
+            <li><time datetime="2026-11-08T14:00">2:00 PM</time><span>Awards</span></li>
+            <li><time datetime="2026-11-08T14:30">2:30 PM</time><span>Wrap</span></li>
           </ol>
         </article>
       </div>
     </section>
 
-    <section class="band" id="judging">
+    <section class="band" id="details">
       <header class="band-head">
-        <p class="eyebrow">Judging</p>
-        <h2>Finals rubric.</h2>
-        <p>Weighted toward fintech. Weights are locked. Category names will be checked against the Devpost rubric before launch.</p>
+        <p class="eyebrow">Details</p>
+        <h2>Good to know.</h2>
       </header>
-      <article class="spot rubric-card">
-        <ol class="rubric">
-          <li><span>Fintech relevance</span><b>20</b></li>
-          <li><span>Technical execution</span><b>15</b></li>
-          <li><span>Innovation</span><b>20</b></li>
-          <li><span>Impact and viability</span><b>25</b></li>
-          <li><span>Design and UX</span><b>10</b></li>
-          <li><span>Pitch</span><b>10</b></li>
-        </ol>
-      </article>
+      <div class="grid grid-3">
+        <article class="spot">
+          <h3>Mentors</h3>
+          <p>Office hours all Saturday, 10 AM to 10 PM. Two or three mentors on at a time, one help queue.</p>
+        </article>
+        <article class="spot">
+          <h3>Food</h3>
+          <p>Six meals are free, plus snacks, coffee, and water. Dietary options are labeled. Ask for what you need on the registration form.</p>
+        </article>
+        <article class="spot">
+          <h3>Judging</h3>
+          <p>Every team demos at its table Sunday morning, to about three judges. The top 5 pitch in finals: 4 minutes, then 3 minutes of questions. Fresh scores pick 1st, 2nd, and 3rd. There is also an audience vote award.</p>
+        </article>
+        <article class="spot">
+          <h3>Teams</h3>
+          <p>Up to 4. Solo is fine. Mixer Saturday at 10 if you do not have a team yet.</p>
+        </article>
+        <article class="spot">
+          <h3>What to bring</h3>
+          <p>Laptop, charger, student ID, and any hardware you want to use.</p>
+        </article>
+        <article class="spot">
+          <h3>Build hours</h3>
+          <p>Building starts Saturday at 10 AM. The venue closes at 10 PM Saturday and reopens at 8:30 AM Sunday.</p>
+        </article>
+      </div>
     </section>
 
     <section class="band" id="faq">
@@ -254,19 +316,15 @@
         </article>
         <article class="spot">
           <h3>Do I need a team?</h3>
-          <p>No. Teams are up to 4. Solo builders get matched at the Friday mixer.</p>
+          <p>No. Teams are up to 4, and solo is fine. There is a mixer Saturday at 10 if you want one.</p>
         </article>
         <article class="spot">
           <h3>What should I bring?</h3>
-          <p>A laptop, a charger, and whatever you need to stay overnight.</p>
+          <p>A laptop, a charger, and your student ID. Bring hardware if you want to use it.</p>
         </article>
         <article class="spot">
-          <h3>Is it overnight?</h3>
-          <p>Yes. Building is open through the weekend.</p>
-        </article>
-        <article class="spot">
-          <h3>How do I submit?</h3>
-          <p>On Devpost, by 10 AM Sunday.</p>
+          <h3>Is the building open all night?</h3>
+          <p>No. Friday ends at 8 PM. Saturday the venue closes at 10 PM and opens again Sunday at 8:30 AM.</p>
         </article>
       </div>
     </section>
@@ -274,55 +332,33 @@
     <section class="band" id="hosts">
       <header class="band-head">
         <p class="eyebrow">Hosts</p>
-        <h2>Three student orgs.</h2>
+        <h2>Four student orgs.</h2>
       </header>
-      <div class="grid grid-3">
+      <div class="grid grid-4 hosts">
         <a class="spot host" href="https://www.sepiatmiami.com/screens/home.html" data-link="SEPI_URL" target="_blank" rel="noopener">
-          <p class="spot-kicker">Host</p>
+          <span class="logo-chip"><img src="assets/logos/sepi.png" alt="" width="72" height="72"></span>
           <h3>Sigma Eta Pi</h3>
-          <p>SEPi</p>
+          <p>Entrepreneurship fraternity</p>
         </a>
         <a class="spot host" href="https://www.muibc.com/" data-link="BANKING_URL" target="_blank" rel="noopener">
-          <p class="spot-kicker">Host</p>
-          <h3>Banking Club</h3>
-          <p>Miami University</p>
+          <span class="logo-chip"><img src="assets/logos/banking-club.png" alt="" width="72" height="72"></span>
+          <h3>Miami Banking Club</h3>
+          <p>Finance and banking</p>
+        </a>
+        <a class="spot host" href="https://mubc.io/" data-link="MUBC_URL" target="_blank" rel="noopener">
+          <span class="logo-chip"><img src="assets/logos/mubc.png" alt="" width="72" height="72"></span>
+          <h3>MUBC</h3>
+          <p>Miami University Blockchain Club</p>
         </a>
         <a class="spot host" href="https://www.redhawkappliedai.club/" data-link="AI_URL" target="_blank" rel="noopener">
-          <p class="spot-kicker">Host</p>
+          <span class="logo-chip"><img src="assets/logos/redhawk-applied-ai.png" alt="" width="72" height="72"></span>
           <h3>RedHawk Applied AI</h3>
-          <p>Student organization</p>
+          <p>Applied AI at Miami</p>
         </a>
       </div>
-    </section>
-
-    <section class="band" id="sponsors">
-      <header class="band-head">
-        <p class="eyebrow">Sponsors</p>
-        <h2>Announced soon.</h2>
-        <p>No company names until they are confirmed.</p>
-      </header>
-      <div class="grid grid-3">
-        <article class="spot">
-          <p class="spot-kicker">Tier</p>
-          <h3>Presenting Partner</h3>
-          <p>Announced soon.</p>
-        </article>
-        <article class="spot">
-          <p class="spot-kicker">Tier</p>
-          <h3>Build Partners</h3>
-          <p>AI credits. Announced soon.</p>
-        </article>
-        <article class="spot">
-          <p class="spot-kicker">Tier</p>
-          <h3>Data Partner</h3>
-          <p>Announced soon.</p>
-        </article>
-      </div>
-      <p class="sponsor-row"><a class="btn" href="#sponsors" data-sponsor>Become a sponsor</a></p>
     </section>
 
     <section class="band closing" id="register">
-      <div class="paths" aria-hidden="true"></div>
       <div class="closing-copy">
         <p class="eyebrow">Nov 6 to 8, 2026</p>
         <h2>Come build.</h2>
@@ -340,8 +376,8 @@
 
   <footer class="colophon">
     <a class="wordmark" href="#top">Redhawk<br>Builds</a>
-    <p>Nov 6 to 8, 2026 · Oxford, Ohio</p>
-    <p>Miami students · Free to attend</p>
+    <p>Miami University · Farmer School of Business · Oxford, Ohio</p>
+    <p>Nov 6 to 8, 2026 · Free for Miami students</p>
   </footer>
   <script src="config.js"></script>
   <script src="app.js"></script>
