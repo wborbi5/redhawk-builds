@@ -6,21 +6,11 @@
     try { return new URL(value).protocol === "https:"; }
     catch { return false; }
   };
-  const validEmail = (value) => typeof value === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
   document.querySelectorAll("[data-link]").forEach((link) => {
     const key = link.dataset.link;
     if (validUrl(config[key])) link.href = config[key];
   });
-
-  const sponsor = document.querySelector("[data-sponsor]");
-  if (sponsor) {
-    if (validEmail(config.SPONSOR_EMAIL)) {
-      sponsor.href = `mailto:${config.SPONSOR_EMAIL}?subject=${encodeURIComponent("Redhawk Builds sponsorship")}`;
-    } else {
-      sponsor.removeAttribute("href");
-    }
-  }
 
   const money = (amount) => `$${Number(amount).toLocaleString("en-US")}`;
   (config.prizes || []).forEach((item, index) => {

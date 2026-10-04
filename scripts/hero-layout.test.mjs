@@ -83,6 +83,7 @@ async function measure(page) {
       return {
         alt: img.getAttribute("alt"),
         host: Boolean(img.closest(".host")),
+        school: Boolean(img.closest(".school-chip")),
         w: r.width,
         h: r.height,
         attrW: img.width,
@@ -124,7 +125,10 @@ try {
       const coverW = m.hero.w >= m.vw - 2 && m.hero.h >= m.vh - 2 && m.hero.x <= 1 && m.hero.y <= 1;
       const center = Math.abs(m.h1.x + m.h1.w / 2 - m.vw / 2);
       const clipped = m.h1.x < 4;
-      const natural = m.logos.filter((logo) => logo.w > 140 || logo.h > 120 || !logo.inside || logo.attrW > 160 || logo.attrH > 120);
+      const natural = m.logos.filter((logo) => {
+        if (logo.school) return !logo.inside || logo.w > 220 || logo.h > 48;
+        return logo.w > 140 || logo.h > 120 || !logo.inside || logo.attrW > 160 || logo.attrH > 120;
+      });
       const chipHeights = [...new Set(m.logos.filter((l) => l.host).map((l) => Math.round(l.chipH)))];
       const cardHeights = m.cards.map((c) => Math.round(c.h));
       const rows = [];

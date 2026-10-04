@@ -7,8 +7,6 @@ window.RHB_CONFIG = {
   BANKING_URL: "https://www.muibc.com/",
   MUBC_URL: "https://mubc.io/",
   AI_URL: "https://www.redhawkappliedai.club/",
-  // Leave blank until a real sponsor inbox exists. Do not invent one.
-  SPONSOR_EMAIL: "",
   CONTACT_EMAIL: "",
   SITE_URL: "https://redhawk-builds.vercel.app",
   // Prize amounts live here only. Change these and the page follows.

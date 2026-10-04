@@ -215,10 +215,14 @@ a.btn:not([href]):hover{background:var(--red)}
 .host:hover h3{color:#fff}
 
 .times{list-style:none;padding:8px 0 0;margin:0}
-.times li{display:grid;grid-template-columns:92px 1fr;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-size:14px;color:#fff}
-.times time{color:var(--red-ink);font-weight:600;font-variant-numeric:tabular-nums}
+.times li{display:grid;grid-template-columns:9rem 1fr;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-size:14px;color:#fff;align-items:start}
+.times time{color:var(--red-ink);font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
 .times span{color:var(--muted)}
-.sponsor-row{margin-top:4px}
+.day-note{margin-top:12px;font-size:14px;line-height:1.45}
+.school-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:0 0 22px}
+.school-chip{width:auto;height:72px;min-width:0;padding:10px 16px;border-radius:16px}
+.school-chip img{height:34px;max-height:34px;width:auto;max-width:200px}
+.school-word{color:#161616;font-weight:700;font-size:15px;line-height:1.15;letter-spacing:-.02em;text-align:left}
 
 .closing{position:relative;min-height:78vh;display:grid;place-items:center;text-align:center;width:100%;max-width:none;padding:120px 20px}
 .closing-copy{position:relative;z-index:1;max-width:680px}
