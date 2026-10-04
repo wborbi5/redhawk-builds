@@ -126,7 +126,7 @@ try {
       const center = Math.abs(m.h1.x + m.h1.w / 2 - m.vw / 2);
       const clipped = m.h1.x < 4;
       const natural = m.logos.filter((logo) => {
-        if (logo.school) return !logo.inside || logo.w > 220 || logo.h > 48;
+        if (logo.school) return !logo.inside || logo.w > 240 || logo.h > 56;
         return logo.w > 140 || logo.h > 120 || !logo.inside || logo.attrW > 160 || logo.attrH > 120;
       });
       const chipHeights = [...new Set(m.logos.filter((l) => l.host).map((l) => Math.round(l.chipH)))];
