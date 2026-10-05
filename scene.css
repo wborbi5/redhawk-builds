@@ -303,3 +303,6 @@ a.btn:not([href]):hover{background:var(--red)}
   .hosted .logo-chip{width:74px;height:64px}
   .hosted .logo-chip img{height:48px;max-height:48px}
 }
+
+/* Participant resources and judging */
+.resource-action{margin:24px 0}.resource-note{margin-top:22px;color:var(--muted);font-size:15px;max-width:900px}.rubric-wrap{overflow-x:auto}.rubric{width:100%;border-collapse:collapse;text-align:left;font-size:16px}.rubric th,.rubric td{padding:18px 16px;border-bottom:1px solid var(--line);vertical-align:top}.rubric thead,.rubric tfoot{background:rgba(255,255,255,.05)}.rubric th:first-child{width:32%}.rubric td:nth-child(2){font-weight:700}.judging-rounds{margin-top:32px}@media(max-width:600px){.rubric th,.rubric td{padding:12px 8px;font-size:13px}.rubric th:first-child{width:34%}.resource-action .btn{white-space:normal}}
