@@ -1,6 +1,13 @@
 {
   "version": 2,
   "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/downloads/redhawk-builds-starter-v1.zip",
+      "destination": "/downloads/redhawk-builds-starter-v1.1.zip",
+      "permanent": false
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
