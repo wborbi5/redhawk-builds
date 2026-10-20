@@ -1,6 +1,11 @@
 [build]
   publish = "."
 
+[[redirects]]
+  from = "/downloads/redhawk-builds-starter-v1.zip"
+  to = "/downloads/redhawk-builds-starter-v1.1.zip"
+  status = 302
+
 [[headers]]
   for = "/*"
   [headers.values]
