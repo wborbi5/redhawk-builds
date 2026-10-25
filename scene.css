@@ -80,7 +80,7 @@ a.btn:not([href]):hover{background:var(--red)}
   pointer-events:none;
 }
 .hero-top,.hero-foot{width:100%;max-width:1080px;min-width:0;margin-inline:auto}
-.hero-copy h1,.hero-tagline,.hero-meta,.hosted-label{text-shadow:0 2px 18px rgba(0,0,0,.72)}
+.hero-copy h1,.hero-tagline,.hero-meta,.hosted-label,.lead-kicker{text-shadow:0 2px 18px rgba(0,0,0,.72)}
 .hero-copy h1{
   font-family:var(--display);font-weight:800;text-transform:uppercase;
   font-size:clamp(52px,6vw,78px);line-height:.82;letter-spacing:.01em;
@@ -107,6 +107,17 @@ a.btn:not([href]):hover{background:var(--red)}
 .rhb-spark{display:block;width:78px;height:22px;flex:0 0 auto}
 .rhb-spark path{fill:none;stroke:#00D47E;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
 .rhb-spark circle{fill:#00D47E}
+.lead-sponsor{display:flex;flex-direction:column;align-items:center;width:min(680px,100%);margin:0 auto 2px}
+.lead-kicker{margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#fff}
+.lead-name{
+  pointer-events:auto;
+  display:block;width:100%;max-width:100%;
+  padding:12px 18px;background:#fff;color:#161616;border-radius:16px;
+  font-weight:700;font-size:clamp(16px,1.7vw,22px);line-height:1.2;letter-spacing:-.02em;
+  text-align:center;text-decoration:none;
+  box-shadow:0 10px 28px rgba(0,0,0,.38);
+}
+.lead-name:hover{color:#9e1024}
 .hosted{margin-top:0;max-width:100%;min-width:0}
 .hosted-label{
   margin-bottom:10px;
@@ -236,6 +247,14 @@ a.btn:not([href]):hover{background:var(--red)}
 .closing{position:relative;min-height:78vh;display:grid;place-items:center;text-align:center;width:100%;max-width:none;padding:120px 20px}
 .closing-copy{position:relative;z-index:1;max-width:680px}
 .closing h2{font-size:clamp(52px,8vw,96px)}
+.sponsor-card{text-align:center;padding:36px 28px}
+.sponsor-card h3.sponsor-name{
+  font-family:var(--display);font-weight:800;text-transform:uppercase;
+  font-size:clamp(40px,6vw,68px);line-height:.92;letter-spacing:.01em;
+  max-width:14em;margin:8px auto 0;color:#fff;
+}
+.sponsor-card p:last-child{max-width:40rem;margin-inline:auto}
+.sponsor-line{margin-top:14px;color:rgba(255,255,255,.82);font-size:16px}
 .closing .btn{margin-top:22px}
 .secondary{display:flex;justify-content:center;gap:22px;margin-top:18px}
 .secondary a{color:rgba(255,255,255,.8)}
@@ -254,10 +273,14 @@ a.btn:not([href]):hover{background:var(--red)}
 .is-static .hero-copy,.no-js .hero-copy{opacity:1;transform:none}
 .is-static .hero-photo,.no-js .hero-photo{opacity:1}
 
+@media(max-width:1180px){
+  .mast{gap:12px;padding:0 16px}
+  .mast nav{gap:12px;font-size:13px}
+}
 @media(max-width:980px){
   .days,.grid-4{grid-template-columns:1fr 1fr}
-  .mast{gap:14px;padding:0 16px}
-  .mast nav{gap:12px;font-size:13px}
+  .mast{gap:10px;padding:0 14px}
+  .mast nav{gap:10px;font-size:12px}
 }
 @media(max-width:720px){
   .mast{height:60px;padding:0 16px}
@@ -267,7 +290,8 @@ a.btn:not([href]):hover{background:var(--red)}
   .hero-copy{padding:72px 16px calc(88px + env(safe-area-inset-bottom))}
   .hero-copy h1{font-size:52px}
   .hero-tagline{font-size:18px}
-  .hero-foot{gap:10px}
+  .lead-name{padding:8px 12px;font-size:15px}
+  .hero-foot{gap:8px}
   .hosted .logo-chip{width:74px;height:64px;padding:6px;border-radius:14px}
   .hosted .logo-chip img{height:48px;max-height:48px}
   .host .logo-chip{width:72px;height:72px;min-width:72px;min-height:72px;flex-basis:72px;padding:8px;border-radius:14px}
@@ -292,6 +316,8 @@ a.btn:not([href]):hover{background:var(--red)}
   .hero-copy{padding:64px 20px 10px}
   .hero-copy h1{font-size:46px}
   .hero-tagline{margin-top:6px;font-size:18px}
+  .lead-kicker{margin-bottom:4px}
+  .lead-name{padding:6px 10px;font-size:14px}
   .hero-meta{margin-top:4px}
   .rhb-chip{margin-top:8px}
   .hosted .logo-chip{width:104px;height:72px;padding:6px 8px}

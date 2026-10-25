@@ -27,6 +27,12 @@
     perk.textContent = `${config.prizes.map((item) => `${item.place} ${money(item.amount)}`).join(". ")}.`;
   }
 
+  const prizeTotal = document.querySelector("[data-prize-total]");
+  if (prizeTotal && config.prizes && config.prizes.length) {
+    const total = config.prizes.reduce((sum, item) => sum + Number(item.amount), 0);
+    prizeTotal.textContent = `${money(total)} in cash for the top three, funded by the John W. Altman Institute for Entrepreneurship.`;
+  }
+
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const main = document.getElementById("main");
   if (main && !reduced) {
