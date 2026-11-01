@@ -230,6 +230,20 @@ a.btn:not([href]):hover{background:var(--red)}
 .times time{color:var(--red-ink);font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
 .times span{color:var(--muted)}
 .day-note{margin-top:12px;font-size:14px;line-height:1.45}
+.agenda{display:grid;gap:14px}
+.day-card{padding:18px 22px 8px}
+.day-card .day-title{
+  margin:0 0 4px;
+  font-family:var(--display);font-weight:800;text-transform:uppercase;
+  font-size:clamp(44px,6vw,64px);line-height:.86;letter-spacing:.01em;
+}
+.day-card .day-dow{color:var(--red-ink);margin-right:.15em}
+.day-card .times{padding-top:4px}
+.day-card .times li{grid-template-columns:8.75rem 1fr;gap:18px;padding:13px 0;font-size:16px;line-height:1.35}
+.day-card .times time{font-size:15px;line-height:1.35}
+.slot-line,.slot-or{display:block}
+.day-card .slot-line{color:#fff}
+.schedule-foot{margin-top:16px;max-width:40rem;color:var(--muted);font-size:15px}
 .school-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:0 0 22px}
 .school-chip{
   width:232px;height:64px;min-width:232px;flex:0 0 232px;
@@ -284,8 +298,20 @@ a.btn:not([href]):hover{background:var(--red)}
 }
 @media(max-width:720px){
   .mast{height:60px;padding:0 16px}
-  .mast nav,.mast .btn{display:none}
+  .mast nav{
+    display:flex;flex:1 1 auto;min-width:0;margin-left:12px;gap:16px;
+    overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+    mask-image:linear-gradient(90deg,#000 calc(100% - 24px),transparent);
+  }
+  .mast nav a{flex:none}
+  .mast nav::-webkit-scrollbar{display:none}
+  .mast .btn{display:none}
   .dock{display:inline-flex}
+  .day-card{padding:16px 14px 6px}
+  .day-card .day-title{font-size:46px}
+  .day-card .times li{grid-template-columns:6.7rem 1fr;gap:10px;padding:12px 0;font-size:15px}
+  .day-card .times time{font-size:13px}
   .hero-scroll{height:150vh;height:150svh}
   .hero-copy{padding:72px 16px calc(88px + env(safe-area-inset-bottom))}
   .hero-copy h1{font-size:52px}
